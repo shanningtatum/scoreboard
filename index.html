@@ -24,15 +24,136 @@
       <section id="add">
         <div class="wrapper">
           <h2>Add Stat</h2>
-          <div class="statSelection">
-            <h3>Room</h3>
-            <ul>
-              <li><button>The Elevator</button></li>
-              <li><button>Kate's Motel</button></li>
-              <li><button>The Last Laugh</button></li>
-              <li><button>The Short Cut</button></li>
-            </ul>
-          </div>
+          <!-- START OF FORM -->
+          <form action="" class="statSelection">
+            <!-- SELECT ROOM -->
+            <fieldset>
+              <legend>Room</legend>
+              <!-- THE ELEVATOR -->
+              <input
+                type="radio"
+                name="roomName"
+                class="roomName"
+                id="roomElevator"
+                value="The Elevator"
+                required
+              />
+              <label for="roomElevator">The Elevator</label>
+
+              <!-- KATE'S MOTEL-->
+              <input
+                type="radio"
+                name="roomName"
+                class="roomName"
+                id="roomKates"
+                value="Kate's Motel"
+              />
+              <label for="roomKates">Kate's Motel</label>
+
+              <!-- THE LAST LAUGH -->
+              <input
+                type="radio"
+                name="roomName"
+                class="roomName"
+                id="roomLastLaugh"
+                value="The Last Laugh"
+              />
+              <label for="roomLastLaugh">The Last Laugh</label>
+
+              <!-- THE SHORT CUT -->
+              <input
+                type="radio"
+                name="roomName"
+                class="roomName"
+                id="roomShortCut"
+                value="The Short Cut"
+              />
+              <label for="roomShortCut">The Short Cut</label>
+            </fieldset>
+            <!-- SELECT PASS -->
+            <fieldset>
+              <legend>Pass</legend>
+              <input
+                type="radio"
+                name="passBoolean"
+                id="passYes"
+                value="Yes"
+                required
+              />
+              <label for="passYes">Yes</label>
+              <input type="radio" name="passBoolean" id="passNo" value="No" />
+              <label for="passNo">No</label>
+            </fieldset>
+            <!-- ENTER TIME  -->
+            <fieldset>
+              <legend>Time</legend>
+              <input type="text" name="timePlayed" id="timePlayed" />
+            </fieldset>
+            <!-- SELECT NUMBER OF PLAYERS -->
+            <fieldset>
+              <legend>Players</legend>
+              <input
+                type="radio"
+                name="playerAmt"
+                id="playersTwo"
+                value="2"
+                required
+              />
+              <label for="playersTwo">2</label>
+              <input
+                type="radio"
+                name="playerAmt"
+                id="playersThree"
+                value="3"
+              />
+              <label for="playersThree">3</label>
+              <input type="radio" name="playerAmt" id="playersFour" value="4" />
+              <label for="playersFour">4</label>
+              <input type="radio" name="playerAmt" id="playersFive" value="5" />
+              <label for="playersFive">5</label>
+              <input type="radio" name="playerAmt" id="playersSix" value="6" />
+              <label for="playersSix">6</label>
+              <input
+                type="radio"
+                name="playerAmt"
+                id="playersSeven"
+                value="7"
+              />
+              <label for="playersSeven">7</label>
+              <input
+                type="radio"
+                name="playerAmt"
+                id="playersEight"
+                value="8"
+              />
+              <label for="playersEight">8</label>
+            </fieldset>
+            <!-- SELECT NUMBER OF HINTS -->
+            <fieldset>
+              <legend>Hints</legend>
+              <input
+                type="radio"
+                name="hintAmt"
+                id="hintZero"
+                value="0"
+                required
+              />
+              <label for="hintZero">0</label>
+              <input type="radio" name="hintAmt" id="hintOne" value="1" />
+              <label for="hintOne">1</label>
+              <input type="radio" name="hintAmt" id="hintTwo" value="2" />
+              <label for="hintTwo">2</label>
+              <input
+                type="radio"
+                name="hintAmt"
+                id="hintThreePlus"
+                value="3+"
+              />
+              <label for="hintThreePlus">3+</label>
+            </fieldset>
+            <button class="submitButton">Submit</button>
+          </form>
+          <!-- END OF FORM-->
         </div>
       </section>
       <section id="edit">
@@ -56,12 +177,13 @@
         </div>
       </section>
     </main>
-    <script type="module" src="database.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"
     ></script>
+
     <script src="script.js"></script>
+    <!-- <script type="module" src="database.js"></script> -->
   </body>
 </html>
