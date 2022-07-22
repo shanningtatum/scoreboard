@@ -292,6 +292,13 @@ fieldset {
   width: 500px;
 }
 
+.passrate {
+  height: 100vh;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
 .view {
   height: 100vh;
   background-color: #fff;

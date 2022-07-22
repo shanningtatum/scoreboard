@@ -38,11 +38,13 @@ app.setTime = () => {
   const currentDate = timestamp.getDate();
   const currentYear = timestamp.getFullYear();
   const currentHours = timestamp.getHours();
-  const currentMinutes = timestamp.getMinutes().padStart(2, "0");
+  const currentMinutes = timestamp.getMinutes();
   const timeOfDay = currentHours >= 12 ? "PM" : "AM";
 
   date = `${currentMonth} ${currentDate}, ${currentYear}`;
-  time = `${currentHours}:${currentMinutes}${timeOfDay}`;
+  time = `${currentHours}:${currentMinutes
+    .toString()
+    .padStart(2, "0")}${timeOfDay}`;
   return date + " " + time;
 };
 
@@ -110,8 +112,6 @@ app.fetchData = function () {
   fetchData();
 };
 
-app.fetchNewData = function () {};
-
 app.addScore = function (date, name, pass, time, player, hint) {
   const roomData = {
     date: date,
@@ -126,6 +126,9 @@ app.addScore = function (date, name, pass, time, player, hint) {
 
   // push object to database
   roomObj(roomData);
+
+  // refresh page
+  location.reload();
 };
 
 // time remaining calculator

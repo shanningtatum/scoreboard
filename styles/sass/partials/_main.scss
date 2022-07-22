@@ -15,8 +15,17 @@ fieldset{
     }
 }
 
+// PASSRATE SECTION
 
-// VIEW SECTION
+.passrate{
+    height:100vh;
+    padding:10px;
+    background-color:rgba($color:$black, $alpha:0.8);
+    color:$white;
+}
+
+
+// RECENT STATS SECTION
 
 .view{
     height:100vh;
