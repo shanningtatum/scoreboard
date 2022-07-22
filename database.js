@@ -5,6 +5,7 @@ import {
   getDatabase,
   ref,
   push,
+  get,
 } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -30,4 +31,15 @@ const dbRef = ref(database);
 
 export default function roomObj(statObject) {
   push(dbRef, statObject);
+}
+
+export function fetchData() {
+  get(dbRef).then((response) => {
+    console.log(response.val());
+    if (response.exists()) {
+      console.log(response.val());
+    } else {
+      console.log("no data!");
+    }
+  });
 }

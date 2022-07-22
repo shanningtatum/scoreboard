@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <title>Room Stats</title>
   </head>
   <body>
@@ -28,7 +35,7 @@
           <form action="" class="statSelection">
             <!-- SELECT ROOM -->
             <fieldset>
-              <legend>Room</legend>
+              <legend>Select Room</legend>
               <!-- THE ELEVATOR -->
               <input
                 type="radio"
@@ -72,7 +79,7 @@
             </fieldset>
             <!-- SELECT PASS -->
             <fieldset>
-              <legend>Pass</legend>
+              <legend>DID THEY ESCAPE?</legend>
               <input
                 type="radio"
                 name="passBoolean"
@@ -85,18 +92,19 @@
               <label for="passNo">No</label>
             </fieldset>
             <!-- ENTER TIME  -->
-            <fieldset>
-              <legend>Time</legend>
+            <fieldset class="timeFieldset">
+              <legend>TIME REMAINING</legend>
               <input
                 type="text"
                 name="timePlayed"
                 id="timePlayed"
                 class="timePlayed"
+                placeholder="ENTER NUMBER ON TIMER"
               />
             </fieldset>
             <!-- SELECT NUMBER OF PLAYERS -->
             <fieldset>
-              <legend>Players</legend>
+              <legend>No. OF PLAYERS</legend>
               <input
                 type="radio"
                 name="playerAmt"
@@ -135,7 +143,7 @@
             </fieldset>
             <!-- SELECT NUMBER OF HINTS -->
             <fieldset>
-              <legend>Hints</legend>
+              <legend>No. OF HINTS</legend>
               <input
                 type="radio"
                 name="hintAmt"

@@ -220,3 +220,37 @@ template {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+html {
+  font-size: 125%;
+}
+
+/* COLOURS */
+/* FONT */
+h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-family: "Bebas Neue", sans-serif;
+}
+
+legend {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.wrapper {
+  max-width: 1280px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.timeFieldset {
+  display: none;
+}

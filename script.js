@@ -1,12 +1,16 @@
 import roomObj from "./database.js";
+import { fetchData } from "./database.js";
 
 const app = {};
 
 // query button for event listener
 app.$submitButton = $(".submitButton");
+app.$passYes = $("#passYes");
+app.$passNo = $("#passNo");
 
-// query display stat class
+// query
 app.$displayStats = $(".displayStats");
+app.$timeFieldset = $(".timeFieldset");
 
 app.addEventListener = function () {
   app.$submitButton.on("click", function (e) {
@@ -22,8 +26,15 @@ app.addEventListener = function () {
     app.readInput();
     // clear radio inputs
   });
+  app.$passYes.on("click", function () {
+    app.$timeFieldset.css("display", "block");
+  });
+  app.$passNo.on("click", function () {
+    app.$timeFieldset.css("display", "none");
+  });
 };
 
+// read the radio button inputs
 app.readInput = function () {
   const roomName = app.$roomName.val();
   const passBoolean = app.$passBoolean.val();
@@ -49,17 +60,11 @@ app.readInput = function () {
   }
 };
 
+// create function that grabs data from db
+app.fetchData = function () {
+  fetchData();
+};
 app.addScore = function (name, pass, time, player, hint) {
-  app.$displayStats.prepend(
-    `<ul>
-        <li>${name}</li>
-        <li>${pass}</li>
-        <li>${time} Remaining</li>
-        <li>${player}</li>
-        <li>${hint}</li>
-    </ul>`
-  );
-
   const roomData = {
     name: name,
     pass: pass,
@@ -69,7 +74,9 @@ app.addScore = function (name, pass, time, player, hint) {
   };
   $("input[type='radio']").prop("checked", false);
   $(".timePlayed").val("");
-  //   roomObj(roomData);
+
+  // push object to database
+  roomObj(roomData);
 };
 
 // time remaining calculator
@@ -114,6 +121,7 @@ app.calculateTimeRemaining = function (room, timeRemaining) {
 app.init = () => {
   console.log("initialized");
   app.addEventListener();
+  fetchData();
 };
 
 $(() => {
