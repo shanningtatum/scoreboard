@@ -43,7 +43,7 @@ app.readInput = function () {
       const noTime = "N/A";
       app.addScore(roomName, passBoolean, noTime, playerAmt, hintAmt);
     } else {
-      const timeDuration = app.calculateTimeRemaining(timePlayed);
+      const timeDuration = app.calculateTimeRemaining(roomName, timePlayed);
       app.addScore(roomName, passBoolean, timeDuration, playerAmt, hintAmt);
     }
   }
@@ -54,7 +54,7 @@ app.addScore = function (name, pass, time, player, hint) {
     `<ul>
         <li>${name}</li>
         <li>${pass}</li>
-        <li>${time}</li>
+        <li>${time} Remaining</li>
         <li>${player}</li>
         <li>${hint}</li>
     </ul>`
@@ -73,9 +73,9 @@ app.addScore = function (name, pass, time, player, hint) {
 };
 
 // time remaining calculator
-app.calculateTimeRemaining = function (timeRemaining) {
-  let seconds;
-  let minutes;
+app.calculateTimeRemaining = function (room, timeRemaining) {
+  //   let seconds;
+  //   let minutes;
   let remainingSeconds;
   let remainingMinutes;
   timeRemaining = timeRemaining.replace(":", "");
@@ -84,21 +84,31 @@ app.calculateTimeRemaining = function (timeRemaining) {
     timeRemaining = timeRemaining.padStart(4, "0");
   }
 
-  const spliceSecond = timeRemaining.slice(-2);
-  const spliceMinute = timeRemaining.slice(0, 2);
+  const seconds = timeRemaining.slice(-2);
+  const minutes = timeRemaining.slice(0, 2);
 
-  if (spliceSecond == "00") {
-    remainingSeconds = spliceSecond.padStart(2, "0");
+  if (seconds == "00") {
+    remainingSeconds = seconds.padStart(2, "0");
     console.log(remainingSeconds);
-    remainingMinutes = 60 - spliceMinute;
+
+    if (room === "The Last Laugh") {
+      remainingMinutes = 75 - minutes;
+    } else {
+      remainingMinutes = 60 - minutes;
+    }
   } else {
-    remainingSeconds = 60 - spliceSecond.padStart(2, "0");
+    remainingSeconds = 60 - seconds.padStart(2, "0");
     remainingSeconds = remainingSeconds.toString().padStart(2, "0");
-    remainingMinutes = 59 - spliceMinute;
+    if (room === "The Last Laugh") {
+      remainingMinutes = 74 - minutes;
+    } else {
+      remainingMinutes = 59 - minutes;
+    }
   }
 
   const remainingTime = `${remainingMinutes}:${remainingSeconds}`;
   console.log(remainingTime);
+  return remainingTime;
 };
 
 app.init = () => {
