@@ -65,6 +65,15 @@ app.fetchData = function () {
   fetchData();
 };
 app.addScore = function (name, pass, time, player, hint) {
+  app.$displayStats.prepend(
+    `<ul>
+            <li>${name}</li>
+            <li>${pass}</li>
+            <li>${time}</li>
+            <li>${player}</li>
+            <li>${hint}</li>
+        </ul>`
+  );
   const roomData = {
     name: name,
     pass: pass,

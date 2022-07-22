@@ -234,6 +234,7 @@ h1 {
 
 h2 {
   font-family: "Bebas Neue", sans-serif;
+  text-align: center;
 }
 
 legend {
@@ -251,6 +252,64 @@ body {
   margin: 0 auto;
 }
 
+header {
+  background-color: #d01f25;
+  padding: 10px;
+  text-align: center;
+}
+header ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+header a {
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+header a:hover, header a:focus {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+main {
+  background-color: bisque;
+}
+
+fieldset {
+  border: none;
+}
+
 .timeFieldset {
   display: none;
+}
+.timeFieldset input {
+  width: 500px;
+}
+
+.view {
+  height: 100vh;
+  background-color: #fff;
+}
+.view ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0;
+}
+.view ul li {
+  width: 20%;
+  text-align: center;
+}
+.view ul li:first-child {
+  text-align: left;
 }

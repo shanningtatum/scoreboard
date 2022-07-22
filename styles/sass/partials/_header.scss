@@ -1,0 +1,21 @@
+header{
+    background-color:$red;
+    padding:10px;
+    text-align:center;
+
+    ul {
+        display:flex;
+        list-style:none;
+        padding:0;
+        justify-content:space-evenly;
+    }
+
+    a{
+        text-decoration:none;
+        color:$white;
+        transition:color 0.3s;
+        &:hover, &:focus{
+            color:rgba($color:$black, $alpha:0.5);
+        }
+    }
+}

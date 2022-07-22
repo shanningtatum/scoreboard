@@ -1,4 +1,41 @@
-.timeFieldset{
-    display:none;
+
+
+main{
+    background-color:bisque;
 }
 
+fieldset{
+    border:none;
+}
+
+.timeFieldset{
+    display:none;
+    input{
+        width:500px;
+    }
+}
+
+
+// VIEW SECTION
+
+.view{
+    height:100vh;
+    background-color:$white;
+
+    ul{
+        display:flex;
+        list-style:none;
+        justify-content:space-between;
+        padding:0;
+
+        li{
+            width:calc(100%/5);
+            text-align:center;
+
+            &:first-child{
+                text-align:left;
+            }
+  
+        }
+    }
+}

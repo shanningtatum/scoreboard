@@ -17,7 +17,6 @@
     <header>
       <div class="wrapper">
         <h1>Perplexity Escape Game</h1>
-        <h2>Room Stats</h2>
         <nav>
           <ul>
             <li><a href="#add">Add Stats</a></li>
@@ -34,7 +33,7 @@
           <!-- START OF FORM -->
           <form action="" class="statSelection">
             <!-- SELECT ROOM -->
-            <fieldset>
+            <fieldset class="roomFieldset">
               <legend>Select Room</legend>
               <!-- THE ELEVATOR -->
               <input
@@ -78,7 +77,7 @@
               <label for="roomShortCut">The Short Cut</label>
             </fieldset>
             <!-- SELECT PASS -->
-            <fieldset>
+            <fieldset class="passFieldset">
               <legend>DID THEY ESCAPE?</legend>
               <input
                 type="radio"
@@ -103,7 +102,7 @@
               />
             </fieldset>
             <!-- SELECT NUMBER OF PLAYERS -->
-            <fieldset>
+            <fieldset class="playersFieldset">
               <legend>No. OF PLAYERS</legend>
               <input
                 type="radio"
@@ -142,7 +141,7 @@
               <label for="playersEight">8</label>
             </fieldset>
             <!-- SELECT NUMBER OF HINTS -->
-            <fieldset>
+            <fieldset class="hintsFieldset">
               <legend>No. OF HINTS</legend>
               <input
                 type="radio"
@@ -174,7 +173,7 @@
           <h2>Edit Stat</h2>
         </div>
       </section>
-      <section id="view">
+      <section id="view" class="view">
         <div class="wrapper">
           <h2>Recent Stat</h2>
           <div class="statsHeader">
