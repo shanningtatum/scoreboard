@@ -239,6 +239,11 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+}
+
 legend {
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.5rem;
@@ -295,7 +300,6 @@ fieldset {
 }
 
 .passrate {
-  height: 100vh;
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
@@ -395,17 +399,18 @@ fieldset {
   right: 35%;
   position: absolute;
   font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
 }
 .additionalText h3 {
   opacity: 0;
-  -webkit-animation: opacityAppear 30s infinite;
-          animation: opacityAppear 30s infinite;
+  -webkit-animation: opacityAppear 30s infinite, transitionIn 30s infinite;
+          animation: opacityAppear 30s infinite, transitionIn 30s infinite;
 }
 
 .view {
-  height: 100vh;
   padding: 10px;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
 }
 .view .statsHeader {
   font-family: "Bebas Neue", sans-serif;
@@ -416,11 +421,14 @@ fieldset {
   margin: 0;
 }
 .view .displayStats {
-  background-color: beige;
+  background-color: gray;
 }
 .view .displayStats ul {
   margin: 0;
   padding: 15px 0;
+}
+.view .displayStats ul:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .view ul {
   display: -webkit-box;
@@ -436,10 +444,28 @@ fieldset {
   width: 16.6666666667%;
   text-align: center;
 }
-.view ul li:first-child {
-  text-align: left;
+
+@-webkit-keyframes slowScale {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale();
+            transform: scale();
+  }
 }
 
+@keyframes slowScale {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale();
+            transform: scale();
+  }
+}
 @-webkit-keyframes opacityChange {
   0% {
     opacity: 1;
@@ -457,7 +483,6 @@ fieldset {
     opacity: 1;
   }
 }
-
 @keyframes opacityChange {
   0% {
     opacity: 1;
@@ -479,13 +504,11 @@ fieldset {
   0% {
     opacity: 0;
   }
-  50% {
+  40% {
     opacity: 0;
   }
-  60% {
+  55% {
     opacity: 1;
-    -webkit-transform: scale(2);
-            transform: scale(2);
   }
   80% {
     opacity: 0;
@@ -498,13 +521,11 @@ fieldset {
   0% {
     opacity: 0;
   }
-  50% {
+  40% {
     opacity: 0;
   }
-  60% {
+  55% {
     opacity: 1;
-    -webkit-transform: scale(2);
-            transform: scale(2);
   }
   80% {
     opacity: 0;
@@ -523,12 +544,12 @@ fieldset {
             transform: translateX(0);
   }
   50% {
-    -webkit-transform: translateX(200px);
-            transform: translateX(200px);
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
   }
-  80% {
-    -webkit-transform: translateX(200px);
-            transform: translateX(200px);
+  70% {
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
   }
   100% {
     -webkit-transform: translateX(0);
@@ -545,12 +566,12 @@ fieldset {
             transform: translateX(0);
   }
   50% {
-    -webkit-transform: translateX(200px);
-            transform: translateX(200px);
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
   }
-  80% {
-    -webkit-transform: translateX(200px);
-            transform: translateX(200px);
+  70% {
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
   }
   100% {
     -webkit-transform: translateX(0);
@@ -559,14 +580,14 @@ fieldset {
 }
 @-webkit-keyframes transitionIn {
   0% {
-    -webkit-transform: translateX(200px);
-            transform: translateX(200px);
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
   }
   40% {
-    -webkit-transform: translateX(200px);
-            transform: translateX(200px);
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
   }
-  50% {
+  60% {
     -webkit-transform: translateX(0);
             transform: translateX(0);
   }
@@ -575,20 +596,20 @@ fieldset {
             transform: translateX(0);
   }
   100% {
-    -webkit-transform: translateX(200px);
-            transform: translateX(200px);
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
   }
 }
 @keyframes transitionIn {
   0% {
-    -webkit-transform: translateX(200px);
-            transform: translateX(200px);
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
   }
   40% {
-    -webkit-transform: translateX(200px);
-            transform: translateX(200px);
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
   }
-  50% {
+  60% {
     -webkit-transform: translateX(0);
             transform: translateX(0);
   }
@@ -597,7 +618,7 @@ fieldset {
             transform: translateX(0);
   }
   100% {
-    -webkit-transform: translateX(200px);
-            transform: translateX(200px);
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
   }
 }
