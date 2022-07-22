@@ -28,4 +28,6 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const dbRef = ref(database);
 
-// const roomObj = push(dbRef, { name: "Kate's Motel", pass: "true", hints: "2" });
+export default function roomObj(statObject) {
+  push(dbRef, statObject);
+}

@@ -1,3 +1,5 @@
+import roomObj from "./database.js";
+
 const app = {};
 
 // query button for event listener
@@ -29,8 +31,9 @@ app.readInput = function () {
 
   console.log(roomName, passBoolean, playerAmt, hintAmt);
 };
+
 app.addScore = function (name, pass, player, hint) {
-  app.$displayStats.append(
+  app.$displayStats.prepend(
     `<ul>
         <li>${name}</li>
         <li>${pass}</li>
@@ -38,7 +41,10 @@ app.addScore = function (name, pass, player, hint) {
         <li>${hint}</li>
     </ul>`
   );
+
+  const roomData = { name: name, pass: pass, player: player, hint: hint };
   $("input[type='radio']").prop("checked", false);
+  roomObj(roomData);
 };
 
 app.init = () => {
