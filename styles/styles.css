@@ -299,6 +299,24 @@ fieldset {
   width: 500px;
 }
 
+.scrollToTop {
+  font-size: 2rem;
+  position: fixed;
+  bottom: 8%;
+  right: 8%;
+}
+.scrollToTop button {
+  background-color: transparent;
+  border: none;
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.scrollToTop button:hover {
+  color: white;
+}
+
 .passrate {
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.8);
@@ -445,27 +463,6 @@ fieldset {
   text-align: center;
 }
 
-@-webkit-keyframes slowScale {
-  from {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  to {
-    -webkit-transform: scale();
-            transform: scale();
-  }
-}
-
-@keyframes slowScale {
-  from {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  to {
-    -webkit-transform: scale();
-            transform: scale();
-  }
-}
 @-webkit-keyframes opacityChange {
   0% {
     opacity: 1;
@@ -483,6 +480,7 @@ fieldset {
     opacity: 1;
   }
 }
+
 @keyframes opacityChange {
   0% {
     opacity: 1;

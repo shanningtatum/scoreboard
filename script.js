@@ -7,6 +7,7 @@ const app = {};
 app.$submitButton = $(".submitButton");
 app.$passYes = $("#passYes");
 app.$passNo = $("#passNo");
+app.$scrollButton = $(".scrollButton");
 
 // query
 app.$displayStats = $(".displayStats");
@@ -49,6 +50,19 @@ app.setTime = () => {
 };
 
 app.addEventListener = function () {
+  $(window).on("scroll", function () {
+    console.log(scrollY);
+    if (scrollY > 10) {
+      app.$scrollButton.css("display", "block");
+    } else {
+      app.$scrollButton.css("display", "none");
+    }
+  });
+
+  app.$scrollButton.on("click", function () {
+    window.scrollTo(0, 0);
+  });
+
   app.$submitButton.on("click", function (e) {
     e.preventDefault();
     // query input buttons

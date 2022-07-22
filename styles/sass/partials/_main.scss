@@ -15,6 +15,28 @@ fieldset{
     }
 }
 
+// SCROLL TO TOP 
+.scrollToTop{
+    font-size:2rem;
+    position: fixed;
+    bottom:8%;
+    right:8%;
+
+    button{
+        background-color:transparent;
+        border:none;
+        z-index:10;
+        color:rgba($color:$white, $alpha:0.5);
+        transition:color 0.3s;
+
+        &:hover{
+            color:rgba($color:$white, $alpha:1);
+        }
+    }
+
+}
+
+
 // PASSRATE SECTION
 
 .passrate{
@@ -159,15 +181,6 @@ fieldset{
 }
 
 // ANIMATION
-
-@keyframes slowScale{
-    from{
-        transform:scale(0)
-    }
-    to{
-        transform:scale()
-    }
-}
 
 @keyframes opacityChange{
     0% {

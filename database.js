@@ -80,7 +80,7 @@ export function fetchData() {
 function displayData() {
   calculateData();
   findBestTime();
-  const lastTen = recentStats.slice(-20);
+  const lastTen = recentStats.slice(-12);
   lastTen.forEach((entry) => {
     $displayStats.prepend(`<ul>
     <li>${entry.date}</li>
