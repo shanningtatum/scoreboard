@@ -12,6 +12,40 @@ app.$passNo = $("#passNo");
 app.$displayStats = $(".displayStats");
 app.$timeFieldset = $(".timeFieldset");
 
+// time and date grabber
+let time;
+let date;
+
+app.setTime = () => {
+  const timestamp = new Date();
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const currentMonth = months[timestamp.getMonth()];
+  const currentDate = timestamp.getDate();
+  const currentYear = timestamp.getFullYear();
+  const currentHours = timestamp.getHours();
+  const currentMinutes = timestamp.getMinutes().padStart(2, "0");
+  const timeOfDay = currentHours >= 12 ? "PM" : "AM";
+
+  date = `${currentMonth} ${currentDate}, ${currentYear}`;
+  time = `${currentHours}:${currentMinutes}${timeOfDay}`;
+  return date + " " + time;
+};
+
 app.addEventListener = function () {
   app.$submitButton.on("click", function (e) {
     e.preventDefault();
@@ -51,11 +85,22 @@ app.readInput = function () {
     alert("Fill in required fields!");
   } else {
     if (timePlayed == "") {
+      const stamp = app.setTime();
+      console.log(stamp);
       const noTime = "N/A";
-      app.addScore(roomName, passBoolean, noTime, playerAmt, hintAmt);
+      app.addScore(stamp, roomName, passBoolean, noTime, playerAmt, hintAmt);
     } else {
+      const stamp = app.setTime();
+      console.log(stamp);
       const timeDuration = app.calculateTimeRemaining(roomName, timePlayed);
-      app.addScore(roomName, passBoolean, timeDuration, playerAmt, hintAmt);
+      app.addScore(
+        stamp,
+        roomName,
+        passBoolean,
+        timeDuration,
+        playerAmt,
+        hintAmt
+      );
     }
   }
 };
@@ -64,17 +109,12 @@ app.readInput = function () {
 app.fetchData = function () {
   fetchData();
 };
-app.addScore = function (name, pass, time, player, hint) {
-  app.$displayStats.prepend(
-    `<ul>
-            <li>${name}</li>
-            <li>${pass}</li>
-            <li>${time}</li>
-            <li>${player}</li>
-            <li>${hint}</li>
-        </ul>`
-  );
+
+app.fetchNewData = function () {};
+
+app.addScore = function (date, name, pass, time, player, hint) {
   const roomData = {
+    date: date,
     name: name,
     pass: pass,
     time: time,
@@ -130,7 +170,7 @@ app.calculateTimeRemaining = function (room, timeRemaining) {
 app.init = () => {
   console.log("initialized");
   app.addEventListener();
-  fetchData();
+  app.fetchData();
 };
 
 $(() => {

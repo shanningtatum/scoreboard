@@ -13,6 +13,9 @@ import {
 
 // Your web app's Firebase configuration
 
+// query stuff
+const $displayStats = $(".displayStats");
+
 const firebaseConfig = {
   apiKey: "AIzaSyB1GiZczbIxSso7zE6CYelGG34X7I5kECE",
   authDomain: "scoreboard-b9174.firebaseapp.com",
@@ -29,17 +32,34 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const dbRef = ref(database);
 
+const recentStats = [];
+
 export default function roomObj(statObject) {
   push(dbRef, statObject);
 }
 
 export function fetchData() {
   get(dbRef).then((response) => {
-    console.log(response.val());
     if (response.exists()) {
-      console.log(response.val());
+      response.forEach((stat) => {
+        recentStats.push(stat.val());
+      });
+      displayData();
     } else {
       console.log("no data!");
     }
+  });
+}
+
+function displayData() {
+  const lastTen = recentStats.slice(-10);
+  lastTen.forEach((entry) => {
+    $displayStats.prepend(`<ul>
+    <li>${entry.date}</li>
+    <li>${entry.name}</li>
+    <li>${entry.pass}</li>
+    <li>${entry.time}</li>
+    <li>${entry.player}</li>
+    <li>${entry.hint}</li></ul>`);
   });
 }
