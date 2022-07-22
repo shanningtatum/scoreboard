@@ -15,6 +15,10 @@ import {
 
 // query stuff
 const $displayStats = $(".displayStats");
+const $katesPassRate = $(".katesPassRate");
+const $elevatorPassRate = $(".elevatorPassRate");
+const $lastLaughPassRate = $(".lastLaughPassRate");
+const $shortCutPassRate = $(".shortCutPassRate");
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1GiZczbIxSso7zE6CYelGG34X7I5kECE",
@@ -38,6 +42,7 @@ const recentStats = [];
 // stores kate's stats
 const kateStats = [];
 const katePass = [];
+const kateTime = [];
 let katePassRate;
 
 // stores LL stats
@@ -74,6 +79,7 @@ export function fetchData() {
 
 function displayData() {
   calculateData();
+  findBestTime();
   const lastTen = recentStats.slice(-10);
   lastTen.forEach((entry) => {
     $displayStats.prepend(`<ul>
@@ -102,6 +108,9 @@ function calculateData() {
       katePassRate = `${((katePass.length / kateStats.length) * 100).toFixed(
         2
       )}%`;
+
+      // assign pass rate variable to kates pass rate class
+      $katesPassRate.text(katePassRate);
     } else if (result.name === "The Short Cut") {
       // stores all objects with the short cut in array
       shortCutStats.push(result);
@@ -115,6 +124,9 @@ function calculateData() {
         (shortCutPass.length / shortCutStats.length) *
         100
       ).toFixed(2)}%`;
+
+      // assign pass rate variable to short cut pass rate class
+      $shortCutPassRate.text(shortCutPassRate);
     } else if (result.name === "The Last Laugh") {
       // stores all objects with the last laugh in array
       lastLaughStats.push(result);
@@ -128,6 +140,9 @@ function calculateData() {
         (lastLaughPass.length / lastLaughStats.length) *
         100
       ).toFixed(2)}%`;
+
+      // assign pass rate variable to last laugh pass rate class
+      $lastLaughPassRate.text(lastLaughPassRate);
     } else if (result.name === "The Elevator") {
       // stores all objects with the elevator in array
       elevatorStats.push(result);
@@ -141,13 +156,21 @@ function calculateData() {
         (elevatorPass.length / elevatorStats.length) *
         100
       ).toFixed(2)}%`;
+
+      // assign pass rate variable to elevator pass rate class
+      $elevatorPassRate.text(elevatorPassRate);
     }
   });
-
-  console.log(katePassRate);
-  console.log(shortCutPassRate);
-  console.log(lastLaughPassRate);
-  console.log(elevatorPassRate);
 }
 
-function passRateStats(pass, total) {}
+function findBestTime() {
+  for (let i = 0; i < kateStats.length; i++) {
+    if (kateStats[i].time !== "N/A") {
+      kateTime.push(parseInt(kateStats[i].time.replace(":", "")));
+    }
+  }
+
+  const kateBestTime = Math.min(...kateTime);
+
+  console.log(kateBestTime);
+}

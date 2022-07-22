@@ -22,14 +22,122 @@ fieldset{
     padding:10px;
     background-color:rgba($color:$black, $alpha:0.8);
     color:$white;
+
+    h3{
+        animation: opacityChange 30s infinite, transitionOut 30s  infinite;
+    }
+
+    p{
+        &:nth-child(2){
+            animation: opacityChange 30s infinite 0.2s, transitionOut 30s  infinite 0.2s;
+        }
+        &:nth-child(3){
+            animation: opacityChange 30s infinite 0.4s, transitionOut 30s  infinite 0.4s;
+        }
+        &:nth-child(4){
+            animation: opacityChange 30s infinite 0.6s, transitionOut 30s  infinite 0.6s;
+        }
+    }
+
+}
+// ELEVATOR
+.roomText{
+    background-color:$black;
+    flex-basis:50%;
+    padding:0 40px;
+    position: relative;
 }
 
+.elevator{
+    display:flex;
+    .roomPoster{
+        flex-basis:50%;
+        background-size:cover;
+        background-position:center;
+        background-image:url('../../../assets/room-1.jpg')
+    }
+
+}
+// KATE'S MOTEL
+.katesMotel{
+    display:flex;
+    .roomPoster{
+        flex-basis:50%;
+        background-size:cover;
+        background-position:center;
+        background-image:url('../../../assets/room-2.jpg')
+    }
+}
+// THE LAST LAUGH
+.theLastLaugh{
+    display:flex;
+    .roomPoster{
+        flex-basis:50%;
+        background-size:cover;
+        background-position:center;
+        background-image:url('../../../assets/room-3.jpg')
+    }
+}
+// THE SHORT CUT
+.theShortCut{
+    display:flex;
+    .roomPoster{
+        flex-basis:50%;
+        background-size:cover;
+        background-position:center;
+        background-image:url('../../../assets/room-4.jpg')
+    }
+}
+// TRUE SPIES
+.trueSpies{
+    display:flex;
+    .roomPoster{
+        flex-basis:50%;
+        background-size:cover;
+        background-position:center;
+        background-image:url('../../../assets/room-5.jpg')
+    }
+
+}
+
+// GENERAL CLASS
+.additionalText{
+    top:25%;
+    right:35%;
+    position: absolute;
+    font-family:$bebas;
+    h3{
+        opacity:0;
+        animation: opacityAppear 30s infinite;
+    }
+}
 
 // RECENT STATS SECTION
 
 .view{
     height:100vh;
+    padding:10px;
     background-color:$white;
+
+    .statsHeader{
+        font-family:$bebas;
+        font-size:1.5rem;
+        // padding:0 20px;
+
+        ul{
+            background-color:$red;
+            margin:0;
+        }
+    }
+
+    .displayStats{
+        background-color:beige;
+
+        ul{
+            margin:0;
+            padding:15px 0;
+        }
+    }
 
     ul{
         display:flex;
@@ -38,7 +146,7 @@ fieldset{
         padding:0;
 
         li{
-            width:calc(100%/5);
+            width:calc(100%/6);
             text-align:center;
 
             &:first-child{
@@ -46,5 +154,90 @@ fieldset{
             }
   
         }
+    }
+}
+
+// ANIMATION
+
+@keyframes opacityChange{
+    0% {
+        opacity:1;
+    }
+    40% {
+        opacity:1;
+    }
+    50%{
+        opacity:0;
+    }
+
+    80%{
+        opacity:0;
+    }
+
+    100%{
+        opacity:1;
+    }
+}
+
+@keyframes opacityAppear{
+    0% {
+        opacity:0;
+    }
+    50% {
+        opacity:0;
+    }
+    60%{
+        opacity:1;
+        transform:scale(2);
+    }
+
+    80%{
+        opacity:0;
+
+    }
+
+    100%{
+        opacity:0;
+
+    }
+}
+
+@keyframes transitionOut{
+    0%{
+        transform:translateX(0)
+    }
+    40%{
+        transform:translateX(0)
+    }
+
+    50%{
+        transform:translateX(200px)
+    }
+
+    80%{
+        transform:translateX(200px)
+    }
+    100%{
+        transform:translateX(0)
+    }
+}
+
+@keyframes transitionIn{
+    0%{
+        transform:translateX(200px)
+    }
+    40%{
+        transform:translateX(200px)
+    }
+
+    50%{
+        transform:translateX(0)
+    }
+
+    80%{
+        transform:translateX(0)
+    }
+    100%{
+        transform:translateX(200px)
     }
 }

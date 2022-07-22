@@ -1,5 +1,6 @@
 html{
     font-size:125%;
+    scroll-behavior: smooth;
 }
 
 /* COLOURS */
@@ -11,3 +12,6 @@ $grey:#58585a;
 /* FONT */
 $poppins:'Poppins',sans-serif;
 $bebas:'Bebas Neue',sans-serif;
+
+/* TRANSITION DELAY */
+$duration: 60s;

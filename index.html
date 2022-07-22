@@ -30,9 +30,104 @@
     <main>
       <section id="passrate" class="passrate">
         <div class="wrapper">
-          <h2>Pass Rate</h2>
+          <h2>LEADERBOARD</h2>
+          <!-- ELEVATOR PASS RATE -->
+          <div class="elevator">
+            <div class="roomPoster">
+              <!-- render room poster -->
+            </div>
+            <div class="roomText">
+              <h3>The Elevator</h3>
+              <p>Pass Rate: <span class="elevatorPassRate"></span></p>
+              <p>Best Time:</p>
+              <p>Hints Used:</p>
+              <div class="additionalText">
+                <h3>Get Your Locks Off!</h3>
+              </div>
+            </div>
+          </div>
+          <!-- KATE'S MOTEL PASS RATE -->
+          <div class="katesMotel">
+            <div class="roomPoster">
+              <!-- render room poster -->
+            </div>
+            <div class="roomText">
+              <h3>Kate's Motel</h3>
+              <p>Pass Rate: <span class="katesPassRate"></span></p>
+              <p>Best Time:</p>
+              <p>Hints Used:</p>
+              <div class="additionalText">
+                <h3>Get Your Locks Off!</h3>
+              </div>
+            </div>
+          </div>
+          <!-- THE LAST LAUGH PASS RATE -->
+          <div class="theLastLaugh">
+            <div class="roomPoster">
+              <!-- render room poster -->
+            </div>
+            <div class="roomText">
+              <h3>The Last Laugh</h3>
+              <p>Pass Rate: <span class="lastLaughPassRate"></span></p>
+              <p>Best Time:</p>
+              <p>Hints Used:</p>
+              <div class="additionalText">
+                <h3>Get Your Locks Off!</h3>
+              </div>
+            </div>
+          </div>
+          <!-- THE SHORT CUT PASS RATE -->
+          <div class="theShortCut">
+            <div class="roomPoster">
+              <!-- render room poster -->
+            </div>
+            <div class="roomText">
+              <h3>The Short Cut</h3>
+              <p>Pass Rate: <span class="shortCutPassRate"></span></p>
+              <p>Best Time</p>
+              <p>Hints Used</p>
+              <div class="additionalText">
+                <h3>Get Your Locks Off!</h3>
+              </div>
+            </div>
+          </div>
+          <!-- TRUE SPIES PASS RATE -->
+          <div class="trueSpies">
+            <div class="roomPoster">
+              <!-- render room poster -->
+            </div>
+            <div class="roomText">
+              <h3>True Spies</h3>
+              <p>Pass Rate</p>
+              <p>Best Time</p>
+              <p>Hints Used</p>
+              <div class="additionalText">
+                <h3>Get Your Locks Off!</h3>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+      <!-- RECENT STATS SECTION -->
+      <section id="view" class="view">
+        <div class="wrapper">
+          <h2>Recent Stat</h2>
+          <div class="statsHeader">
+            <ul>
+              <li>Date</li>
+              <li>Room</li>
+              <li>Passed</li>
+              <li>Time</li>
+              <li>Players</li>
+              <li>Hint</li>
+            </ul>
+          </div>
+          <div class="displayStats">
+            <!-- render stats here? -->
+          </div>
+        </div>
+      </section>
+      <!-- ADD STATS SECTION -->
       <section id="add">
         <div class="wrapper">
           <h2>Add Stat</h2>
@@ -174,30 +269,14 @@
           <!-- END OF FORM-->
         </div>
       </section>
+      <!-- EDIT STATS SECTION -->
       <section id="edit">
         <div class="wrapper">
           <h2>Edit Stat</h2>
         </div>
       </section>
-      <section id="view" class="view">
-        <div class="wrapper">
-          <h2>Recent Stat</h2>
-          <div class="statsHeader">
-            <ul>
-              <li>Date</li>
-              <li>Room</li>
-              <li>Passed</li>
-              <li>Time</li>
-              <li>Players</li>
-              <li>Hint</li>
-            </ul>
-          </div>
-          <div class="displayStats">
-            <!-- render stats here? -->
-          </div>
-        </div>
-      </section>
     </main>
+    <!-- END OF MAIN -->
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
