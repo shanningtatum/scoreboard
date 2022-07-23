@@ -75,7 +75,8 @@ fieldset{
         flex-basis:50%;
         background-size:cover;
         background-position:center;
-        background-image:url('../../../assets/room-1.jpg')
+        background-image:url('../../../assets/room-1.jpg');
+        // animation:pulseBg 30s infinite ;
     }
 
 }
@@ -86,7 +87,8 @@ fieldset{
         flex-basis:50%;
         background-size:cover;
         background-position:center;
-        background-image:url('../../../assets/room-2.jpg')
+        background-image:url('../../../assets/room-2.jpg');
+        // animation:pulseBg 30s infinite 15s;
     }
 }
 // THE LAST LAUGH
@@ -96,7 +98,8 @@ fieldset{
         flex-basis:50%;
         background-size:cover;
         background-position:center;
-        background-image:url('../../../assets/room-3.jpg')
+        background-image:url('../../../assets/room-3.jpg');
+        // animation:pulseBg 30s infinite 30s;
     }
 }
 // THE SHORT CUT
@@ -106,7 +109,8 @@ fieldset{
         flex-basis:50%;
         background-size:cover;
         background-position:center;
-        background-image:url('../../../assets/room-4.jpg')
+        background-image:url('../../../assets/room-4.jpg');
+        // animation:pulseBg 30s infinite 45s;
     }
 }
 // TRUE SPIES
@@ -116,7 +120,8 @@ fieldset{
         flex-basis:50%;
         background-size:cover;
         background-position:center;
-        background-image:url('../../../assets/room-5.jpg')
+        background-image:url('../../../assets/room-5.jpg');
+        // animation:pulseBg 30s infinite 60s;
     }
 
 }
@@ -142,27 +147,32 @@ fieldset{
     color:$white;
 
     .statsHeader{
-        font-family:$bebas;
         font-size:1.5rem;
         // padding:0 20px;
 
         ul{
+            border-radius:3px;
+            
+            border:2px $red solid;
             background-color:$red;
             margin:0;
         }
     }
 
     .displayStats{
-        background-color:rgba($color:grey, $alpha:1);
-        
-
         ul{
-            margin:0;
+            margin:0 0px 10px;
             padding:15px 0;
+            // border-radius:10px;
+            background-color:rgba($color:$grey, $alpha:1);
 
             &:nth-child(odd){
-                background-color:rgba($color:$black, $alpha:0.3);
+                background-color:rgba($color:$grey, $alpha:0.5);
+                // border-radius:10px;
             }
+        }
+        li{
+            align-self:center;
         }
     }
 
@@ -180,86 +190,3 @@ fieldset{
     }
 }
 
-// ANIMATION
-
-@keyframes opacityChange{
-    0% {
-        opacity:1;
-    }
-    40% {
-        opacity:1;
-    }
-    50%{
-        opacity:0;
-    }
-
-    80%{
-        opacity:0;
-    }
-
-    100%{
-        opacity:1;
-    }
-}
-
-@keyframes opacityAppear{
-    0% {
-        opacity:0;
-    }
-    40% {
-        opacity:0;
-    }
-    55%{
-        opacity:1;
-    }
-
-    80%{
-        opacity:0;
-
-    }
-
-    100%{
-        opacity:0;
-
-    }
-}
-
-@keyframes transitionOut{
-    0%{
-        transform:translateX(0)
-    }
-    40%{
-        transform:translateX(0)
-    }
-
-    50%{
-        transform:translateX(50px)
-    }
-
-    70%{
-        transform:translateX(50px)
-    }
-    100%{
-        transform:translateX(0)
-    }
-}
-
-@keyframes transitionIn{
-    0%{
-        transform:translateX(50px)
-    }
-    40%{
-        transform:translateX(50px)
-    }
-
-    60%{
-        transform:translateX(0)
-    }
-
-    80%{
-        transform:translateX(0)
-    }
-    100%{
-        transform:translateX(50px)
-    }
-}

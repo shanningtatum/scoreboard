@@ -15,6 +15,7 @@ import {
 
 // query stuff
 const $displayStats = $(".displayStats");
+
 const $katesPassRate = $(".katesPassRate");
 const $elevatorPassRate = $(".elevatorPassRate");
 const $lastLaughPassRate = $(".lastLaughPassRate");
@@ -38,6 +39,7 @@ const dbRef = ref(database);
 
 // stores all recent stats so I can use the data
 const recentStats = [];
+const fastTime = [];
 
 // stores kate's stats
 const kateStats = [];
@@ -48,16 +50,19 @@ let katePassRate;
 // stores LL stats
 const lastLaughStats = [];
 const lastLaughPass = [];
+const lastLaughTime = [];
 let lastLaughPassRate;
 
 // stores SC stats
 const shortCutStats = [];
 const shortCutPass = [];
+const shortCutTime = [];
 let shortCutPassRate;
 
 // stores elevator stats
 const elevatorStats = [];
 const elevatorPass = [];
+const elevatorTime = [];
 let elevatorPassRate;
 
 export default function roomObj(statObject) {
@@ -79,12 +84,11 @@ export function fetchData() {
 
 function displayData() {
   calculateData();
-  findBestTime();
   const lastTen = recentStats.slice(-12);
   lastTen.forEach((entry) => {
     $displayStats.prepend(`<ul>
     <li>${entry.date}</li>
-    <li>${entry.name}</li>
+    <li class="statName">${entry.name}</li>
     <li>${entry.pass}</li>
     <li>${entry.time}</li>
     <li>${entry.player}</li>
@@ -104,13 +108,6 @@ function calculateData() {
       if (result.pass === "Yes") {
         katePass.push(result);
       }
-
-      katePassRate = `${((katePass.length / kateStats.length) * 100).toFixed(
-        2
-      )}%`;
-
-      // assign pass rate variable to kates pass rate class
-      $katesPassRate.text(katePassRate);
     } else if (result.name === "The Short Cut") {
       // stores all objects with the short cut in array
       shortCutStats.push(result);
@@ -119,14 +116,6 @@ function calculateData() {
       if (result.pass === "Yes") {
         shortCutPass.push(result);
       }
-
-      shortCutPassRate = `${(
-        (shortCutPass.length / shortCutStats.length) *
-        100
-      ).toFixed(2)}%`;
-
-      // assign pass rate variable to short cut pass rate class
-      $shortCutPassRate.text(shortCutPassRate);
     } else if (result.name === "The Last Laugh") {
       // stores all objects with the last laugh in array
       lastLaughStats.push(result);
@@ -134,15 +123,8 @@ function calculateData() {
       // saves pass objects in separate array
       if (result.pass === "Yes") {
         lastLaughPass.push(result);
+        console.log(lastLaughPass);
       }
-
-      lastLaughPassRate = `${(
-        (lastLaughPass.length / lastLaughStats.length) *
-        100
-      ).toFixed(2)}%`;
-
-      // assign pass rate variable to last laugh pass rate class
-      $lastLaughPassRate.text(lastLaughPassRate);
     } else if (result.name === "The Elevator") {
       // stores all objects with the elevator in array
       elevatorStats.push(result);
@@ -151,20 +133,90 @@ function calculateData() {
       if (result.pass === "Yes") {
         elevatorPass.push(result);
       }
-
-      elevatorPassRate = `${(
-        (elevatorPass.length / elevatorStats.length) *
-        100
-      ).toFixed(2)}%`;
-
-      // assign pass rate variable to elevator pass rate class
-      $elevatorPassRate.text(elevatorPassRate);
     }
   });
+
+  // gives value to elevator pass rate
+  elevatorPassRate = `${(
+    (elevatorPass.length / elevatorStats.length) *
+    100
+  ).toFixed(2)}%`;
+  // gives value to Kate's Pass Rate
+  katePassRate = `${((katePass.length / kateStats.length) * 100).toFixed(2)}%`;
+  // gives value to LL past rate
+  lastLaughPassRate = `${(
+    (lastLaughPass.length / lastLaughStats.length) *
+    100
+  ).toFixed(2)}%`;
+  // gives value to SC pass rate
+  shortCutPassRate = `${(
+    (shortCutPass.length / shortCutStats.length) *
+    100
+  ).toFixed(2)}%`;
+
+  // assign pass rate variable to elevator pass rate class
+  $elevatorPassRate.text(elevatorPassRate);
+  elevatorTime.push(findBestTime(elevatorPass));
+  // displayBestTime(elevatorTime);
+
+  // assign pass rate variable to kates pass rate class
+  $katesPassRate.text(katePassRate);
+  kateTime.push(findBestTime(katePass));
+  // displayBestTime(kateTime);
+
+  // assign pass rate variable to last laugh pass rate class
+  $lastLaughPassRate.text(lastLaughPassRate);
+  lastLaughTime.push(findBestTime(lastLaughPass));
+  displayBestTime(lastLaughTime);
+
+  // assign pass rate variable to short cut pass rate class
+  $shortCutPassRate.text(shortCutPassRate);
+  shortCutTime.push(findBestTime(shortCutPass));
+  // displayBestTime(shortCutTime);
 }
 
-function findBestTime() {
-  for (let i = 0; i < katePass.length; i++) {
-    console.log(katePass[i]);
-  }
+// will display best time
+function displayBestTime(array) {
+  console.log("the best times");
+  console.log(array);
 }
+
+// calculates the best time of each room
+function findBestTime(string) {
+  // goes through all of the passed room array to push the time, id, and date in a new array
+
+  for (let i = 0; i < string.length; i++) {
+    fastTime.push({
+      time: parseInt(string[i].time.replace(":", "")),
+      id: `${i}`,
+      date: string[i].date,
+    });
+  }
+
+  console.log(string);
+  console.log(fastTime);
+
+  // finds the fastest time somoene completed the room and stores into variable
+  let fastestTime = Math.min(...fastTime.map((item) => item.time));
+
+  // console.log(fastestTime);
+  // now need to find the fastest time in pass stats
+
+  // converting the variable back into a string
+  let makeIntoString = [
+    fastestTime.toString().slice(0, 2),
+    fastestTime.toString().slice(-2),
+  ].join(":");
+
+  // find the object in the db with the best time to get player, hint, and date info
+  let recordDate = string.find((element) => element.time == makeIntoString);
+
+  console.log(recordDate);
+  return recordDate;
+}
+
+// PSEUDO
+
+// go through the array object
+// push these numbers and their index in another array
+// can you use math.min on it?

@@ -1,0 +1,95 @@
+// ANIMATION
+
+@keyframes opacityChange{
+    0% {
+        opacity:1;
+    }
+    40% {
+        opacity:1;
+    }
+    50%{
+        opacity:0;
+    }
+
+    80%{
+        opacity:0;
+    }
+
+    100%{
+        opacity:1;
+    }
+}
+
+@keyframes opacityAppear{
+    0% {
+        opacity:0;
+    }
+    40% {
+        opacity:0;
+    }
+    55%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:0;
+
+    }
+
+    100%{
+        opacity:0;
+
+    }
+}
+
+@keyframes transitionOut{
+    0%{
+        transform:translateX(0)
+    }
+    40%{
+        transform:translateX(0)
+    }
+
+    50%{
+        transform:translateX(50px)
+    }
+
+    70%{
+        transform:translateX(50px)
+    }
+    100%{
+        transform:translateX(0)
+    }
+}
+
+@keyframes transitionIn{
+    0%{
+        transform:translateX(50px)
+    }
+    40%{
+        transform:translateX(50px)
+    }
+
+    60%{
+        transform:translateX(0)
+    }
+
+    80%{
+        transform:translateX(0)
+    }
+    100%{
+        transform:translateX(50px)
+    }
+}
+
+@keyframes pulseBg{
+    0% {
+        background-position:center;
+    }
+    20% {
+        background-position:0 100%;
+    }
+    100%{
+        background-position:center;
+    }
+}

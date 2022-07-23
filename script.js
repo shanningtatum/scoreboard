@@ -51,7 +51,6 @@ app.setTime = () => {
 
 app.addEventListener = function () {
   $(window).on("scroll", function () {
-    console.log(scrollY);
     if (scrollY > 10) {
       app.$scrollButton.css("display", "block");
     } else {
@@ -102,12 +101,10 @@ app.readInput = function () {
   } else {
     if (timePlayed == "") {
       const stamp = app.setTime();
-      console.log(stamp);
       const noTime = "N/A";
       app.addScore(stamp, roomName, passBoolean, noTime, playerAmt, hintAmt);
     } else {
       const stamp = app.setTime();
-      console.log(stamp);
       const timeDuration = app.calculateTimeRemaining(roomName, timePlayed);
       app.addScore(
         stamp,
@@ -139,6 +136,7 @@ app.addScore = function (date, name, pass, time, player, hint) {
   $(".timePlayed").val("");
 
   // push object to database
+
   roomObj(roomData);
 
   // refresh page
@@ -162,7 +160,6 @@ app.calculateTimeRemaining = function (room, timeRemaining) {
 
   if (seconds == "00") {
     remainingSeconds = seconds.padStart(2, "0");
-    console.log(remainingSeconds);
 
     if (room === "The Last Laugh") {
       remainingMinutes = 75 - minutes;
@@ -180,17 +177,14 @@ app.calculateTimeRemaining = function (room, timeRemaining) {
   }
 
   const remainingTime = `${remainingMinutes}:${remainingSeconds}`;
-  console.log(remainingTime);
   return remainingTime;
 };
 
 app.init = () => {
-  console.log("initialized");
   app.addEventListener();
   app.fetchData();
 };
 
 $(() => {
-  console.log("document ready");
   app.init();
 });
