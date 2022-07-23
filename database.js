@@ -39,7 +39,6 @@ const dbRef = ref(database);
 
 // stores all recent stats so I can use the data
 const recentStats = [];
-const fastTime = [];
 
 // stores kate's stats
 const kateStats = [];
@@ -123,7 +122,6 @@ function calculateData() {
       // saves pass objects in separate array
       if (result.pass === "Yes") {
         lastLaughPass.push(result);
-        console.log(lastLaughPass);
       }
     } else if (result.name === "The Elevator") {
       // stores all objects with the elevator in array
@@ -157,32 +155,40 @@ function calculateData() {
   // assign pass rate variable to elevator pass rate class
   $elevatorPassRate.text(elevatorPassRate);
   elevatorTime.push(findBestTime(elevatorPass));
-  // displayBestTime(elevatorTime);
+  displayBestTime("elevator", elevatorTime);
 
   // assign pass rate variable to kates pass rate class
   $katesPassRate.text(katePassRate);
   kateTime.push(findBestTime(katePass));
-  // displayBestTime(kateTime);
+  displayBestTime("katesMotel", kateTime);
 
   // assign pass rate variable to last laugh pass rate class
   $lastLaughPassRate.text(lastLaughPassRate);
   lastLaughTime.push(findBestTime(lastLaughPass));
-  displayBestTime(lastLaughTime);
+  displayBestTime("theLastLaugh", lastLaughTime);
 
   // assign pass rate variable to short cut pass rate class
   $shortCutPassRate.text(shortCutPassRate);
   shortCutTime.push(findBestTime(shortCutPass));
-  // displayBestTime(shortCutTime);
+  displayBestTime("theShortCut", shortCutTime);
 }
 
 // will display best time
-function displayBestTime(array) {
-  console.log("the best times");
+function displayBestTime(roomName, array) {
+  console.log(array);
+  const $escapeGame = $(`.${roomName} .roomText`);
+
+  $escapeGame.append(`
+  <p>Best Time: ${array[0].time} </p>
+  <p>Set on: ${array[0].date}</p>
+  <p>No. of Players: ${array[0].player}</p>
+  <p>Hints USED: ${array[0].hint}</p>`);
   console.log(array);
 }
 
 // calculates the best time of each room
 function findBestTime(string) {
+  const fastTime = [];
   // goes through all of the passed room array to push the time, id, and date in a new array
 
   for (let i = 0; i < string.length; i++) {
@@ -193,11 +199,8 @@ function findBestTime(string) {
     });
   }
 
-  console.log(string);
-  console.log(fastTime);
-
   // finds the fastest time somoene completed the room and stores into variable
-  let fastestTime = Math.min(...fastTime.map((item) => item.time));
+  const fastestTime = Math.min(...fastTime.map((item) => item.time));
 
   // console.log(fastestTime);
   // now need to find the fastest time in pass stats
@@ -211,7 +214,6 @@ function findBestTime(string) {
   // find the object in the db with the best time to get player, hint, and date info
   let recordDate = string.find((element) => element.time == makeIntoString);
 
-  console.log(recordDate);
   return recordDate;
 }
 
