@@ -511,11 +511,6 @@ fieldset {
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
 }
-.passrate h3 {
-  -webkit-animation: opacityChange 30s infinite, transitionOut 30s infinite;
-          animation: opacityChange 30s infinite, transitionOut 30s infinite;
-}
-
 .roomText {
   background-color: #000;
   -ms-flex-preferred-size: 50%;
