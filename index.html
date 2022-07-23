@@ -197,6 +197,29 @@
                 placeholder="ENTER NUMBER ON TIMER"
               />
             </fieldset>
+            <!-- SELECT NUMBER OF HINTS -->
+            <fieldset class="hintsFieldset">
+              <legend>No. OF HINTS</legend>
+              <input
+                type="radio"
+                name="hintAmt"
+                id="hintZero"
+                value="0"
+                required
+              />
+              <label for="hintZero">0</label>
+              <input type="radio" name="hintAmt" id="hintOne" value="1" />
+              <label for="hintOne">1</label>
+              <input type="radio" name="hintAmt" id="hintTwo" value="2" />
+              <label for="hintTwo">2</label>
+              <input
+                type="radio"
+                name="hintAmt"
+                id="hintThreePlus"
+                value="3+"
+              />
+              <label for="hintThreePlus">3+</label>
+            </fieldset>
             <!-- SELECT NUMBER OF PLAYERS -->
             <fieldset class="playersFieldset">
               <legend>No. OF PLAYERS</legend>
@@ -236,29 +259,7 @@
               />
               <label for="playersEight">8</label>
             </fieldset>
-            <!-- SELECT NUMBER OF HINTS -->
-            <fieldset class="hintsFieldset">
-              <legend>No. OF HINTS</legend>
-              <input
-                type="radio"
-                name="hintAmt"
-                id="hintZero"
-                value="0"
-                required
-              />
-              <label for="hintZero">0</label>
-              <input type="radio" name="hintAmt" id="hintOne" value="1" />
-              <label for="hintOne">1</label>
-              <input type="radio" name="hintAmt" id="hintTwo" value="2" />
-              <label for="hintTwo">2</label>
-              <input
-                type="radio"
-                name="hintAmt"
-                id="hintThreePlus"
-                value="3+"
-              />
-              <label for="hintThreePlus">3+</label>
-            </fieldset>
+
             <button class="submitButton">Submit</button>
           </form>
           <!-- END OF FORM-->
