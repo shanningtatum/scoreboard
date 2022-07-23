@@ -16,10 +16,10 @@ import {
 // query stuff
 const $displayStats = $(".displayStats");
 
-const $katesPassRate = $(".katesPassRate");
-const $elevatorPassRate = $(".elevatorPassRate");
-const $lastLaughPassRate = $(".lastLaughPassRate");
-const $shortCutPassRate = $(".shortCutPassRate");
+const $katesPassRate = $(".katesMotel .additionalText");
+const $elevatorPassRate = $(".elevator .additionalText");
+const $lastLaughPassRate = $(".theLastLaugh .additionalText");
+const $shortCutPassRate = $(".theShortCut .additionalText");
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1GiZczbIxSso7zE6CYelGG34X7I5kECE",
@@ -153,37 +153,42 @@ function calculateData() {
   ).toFixed(2)}%`;
 
   // assign pass rate variable to elevator pass rate class
-  $elevatorPassRate.text(elevatorPassRate);
+  $elevatorPassRate.append(
+    `<h3><span>Pass Rate</span>${elevatorPassRate}</h3>`
+  );
   elevatorTime.push(findBestTime(elevatorPass));
   displayBestTime("elevator", elevatorTime);
 
   // assign pass rate variable to kates pass rate class
-  $katesPassRate.text(katePassRate);
+  $katesPassRate.append(`<h3><span>Pass Rate</span>${katePassRate}</h3>`);
   kateTime.push(findBestTime(katePass));
   displayBestTime("katesMotel", kateTime);
 
   // assign pass rate variable to last laugh pass rate class
-  $lastLaughPassRate.text(lastLaughPassRate);
+  $lastLaughPassRate.append(
+    `<h3><span>Pass Rate</span>${lastLaughPassRate}</h3>`
+  );
   lastLaughTime.push(findBestTime(lastLaughPass));
   displayBestTime("theLastLaugh", lastLaughTime);
 
   // assign pass rate variable to short cut pass rate class
-  $shortCutPassRate.text(shortCutPassRate);
+  $shortCutPassRate.append(
+    `<h3><span>Pass Rate</span>${shortCutPassRate}</h3>`
+  );
   shortCutTime.push(findBestTime(shortCutPass));
   displayBestTime("theShortCut", shortCutTime);
 }
 
 // will display best time
 function displayBestTime(roomName, array) {
-  console.log(array);
   const $escapeGame = $(`.${roomName} .roomText`);
 
   $escapeGame.append(`
-  <p>Best Time: ${array[0].time} </p>
-  <p>Set on: ${array[0].date}</p>
-  <p>No. of Players: ${array[0].player}</p>
-  <p>Hints USED: ${array[0].hint}</p>`);
-  console.log(array);
+  <h4>Best Time</h4>
+  <p>${array[0].time}</p>
+  <p>${array[0].date}</p>
+  <p>${array[0].player} players</p>
+  <p>${array[0].hint} hint(s)</p>`);
 }
 
 // calculates the best time of each room
@@ -202,7 +207,6 @@ function findBestTime(string) {
   // finds the fastest time somoene completed the room and stores into variable
   const fastestTime = Math.min(...fastTime.map((item) => item.time));
 
-  // console.log(fastestTime);
   // now need to find the fastest time in pass stats
 
   // converting the variable back into a string

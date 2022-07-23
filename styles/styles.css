@@ -493,11 +493,11 @@ fieldset {
   position: fixed;
   bottom: 8%;
   right: 8%;
+  z-index: 100;
 }
 .scrollToTop button {
   background-color: transparent;
   border: none;
-  z-index: 10;
   color: rgba(255, 255, 255, 0.5);
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
@@ -591,15 +591,30 @@ fieldset {
 
 .additionalText {
   top: 25%;
-  right: 35%;
+  right: -5%;
+  padding: 5px 20px;
+  width: 200px;
+  background-color: #d01f25;
+  text-align: center;
   position: absolute;
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.5rem;
 }
+.additionalText span {
+  font-size: 1rem;
+}
 .additionalText h3 {
-  opacity: 0;
-  -webkit-animation: opacityAppear 30s infinite, transitionIn 30s infinite;
-          animation: opacityAppear 30s infinite, transitionIn 30s infinite;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  opacity: 1;
+  -webkit-animation: none;
+          animation: none;
 }
 
 .view {
