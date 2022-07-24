@@ -42,10 +42,11 @@ app.setTime = () => {
   const currentMinutes = timestamp.getMinutes();
   const timeOfDay = currentHours >= 12 ? "PM" : "AM";
 
+  let hours = currentHours % 12;
+  hours = hours ? hours : 12;
+
   date = `${currentMonth} ${currentDate}, ${currentYear}`;
-  time = `${currentHours}:${currentMinutes
-    .toString()
-    .padStart(2, "0")}${timeOfDay}`;
+  time = `${hours}:${currentMinutes.toString().padStart(2, "0")}${timeOfDay}`;
   return date + " " + time;
 };
 

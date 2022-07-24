@@ -8,6 +8,27 @@ fieldset{
     border:none;
 }
 
+input[type=radio]{
+    display:none;
+
+    &:checked + label{
+        
+        background-color:white;
+        // transform:scale(2rem);
+    }
+}
+
+label{
+    border:2px $red solid;
+    background-color:$red;
+    padding:5px 20px;
+    transition:background-color 0.2s;
+
+    &:hover{
+        background-color:white;
+    }
+}
+
 .timeFieldset{
     display:none;
     input{
@@ -45,9 +66,9 @@ fieldset{
     background-color:rgba($color:$black, $alpha:0.8);
     color:$white;
 
-    h3{
-        // animation: opacityChange 30s infinite, transitionOut 30s  infinite;
-    }
+    // h3{
+    //     // animation: opacityChange 30s infinite, transitionOut 30s  infinite;
+    // }
 
     // p{
     //     &:nth-child(2){

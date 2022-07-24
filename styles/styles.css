@@ -481,6 +481,24 @@ fieldset {
   border: none;
 }
 
+input[type=radio] {
+  display: none;
+}
+input[type=radio]:checked + label {
+  background-color: white;
+}
+
+label {
+  border: 2px #d01f25 solid;
+  background-color: #d01f25;
+  padding: 5px 20px;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+label:hover {
+  background-color: white;
+}
+
 .timeFieldset {
   display: none;
 }
@@ -511,6 +529,7 @@ fieldset {
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
 }
+
 .roomText {
   background-color: #000;
   -ms-flex-preferred-size: 50%;
