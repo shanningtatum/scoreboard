@@ -71,29 +71,41 @@ export default function roomObj(statObject) {
 export function fetchData() {
   get(dbRef).then((response) => {
     if (response.exists()) {
-      response.forEach((stat) => {
-        recentStats.push(stat.val());
+      console.log(response.val());
+
+      recentStats.push(response.val());
+
+      console.log(recentStats);
+
+      const lastTen = recentStats.slice(-10);
+      lastTen.forEach((entry) => {
+        console.log(entry);
+        $displayStats.prepend(`<ul>
+        <li>${entry.date}</li>
+        <li>${entry.name}</li>
+        <li>${entry.pass}</li>
+        <li>${entry.time}</li>
+        <li>${entry.player}</li>
+        <li>${entry.hint}</li></ul>`);
       });
-      displayData();
+
+      // recentStats.push(response.val());
+
+      // response.forEach((stat) => {
+      //   recentStats.push(stat.val());
+      // });
+
+      // displays the passrates for the rooms based on the stats
+      // calculateData();
+      // displays most recent data
+      // displayData();
     } else {
       console.log("no data!");
     }
   });
 }
 
-function displayData() {
-  calculateData();
-  const lastTen = recentStats.slice(-12);
-  lastTen.forEach((entry) => {
-    $displayStats.prepend(`<ul>
-    <li>${entry.date}</li>
-    <li class="statName">${entry.name}</li>
-    <li>${entry.pass}</li>
-    <li>${entry.time}</li>
-    <li>${entry.player}</li>
-    <li>${entry.hint}</li></ul>`);
-  });
-}
+// function displayData() {}
 
 function calculateData() {
   // console.log(recentStats);

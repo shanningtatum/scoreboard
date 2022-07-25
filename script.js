@@ -141,7 +141,7 @@ app.addScore = function (date, name, pass, time, player, hint) {
   roomObj(roomData);
 
   // refresh page
-  location.reload();
+  // location.reload();
 };
 
 // time remaining calculator
