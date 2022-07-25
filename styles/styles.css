@@ -499,6 +499,30 @@ label:hover {
   background-color: white;
 }
 
+.buttonDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 20px 0;
+}
+
+.submitButton {
+  background-color: grey;
+  padding: 5px 10px;
+  color: white;
+  border: 2px grey solid;
+  margin: 0 auto;
+  -webkit-transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+}
+.submitButton:hover {
+  background-color: #fff;
+  color: #000;
+}
+
 .timeFieldset {
   display: none;
 }
@@ -671,6 +695,7 @@ label:hover {
   background-color: rgba(88, 88, 90, 0.5);
 }
 .view .displayStats li {
+  line-height: 20px;
   -ms-flex-item-align: center;
       align-self: center;
 }

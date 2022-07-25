@@ -23,9 +23,26 @@ label{
     background-color:$red;
     padding:5px 20px;
     transition:background-color 0.2s;
-
     &:hover{
         background-color:white;
+    }
+}
+.buttonDiv{
+    display:flex;
+    justify-content:center;
+    margin:20px 0;
+}
+.submitButton{
+    background-color:grey;
+    padding:5px 10px;
+    color:white;
+    border:2px grey solid;
+    margin:0 auto;
+    transition:background-color 0.3s, color 0.3s;
+
+    &:hover{
+        background-color:$white;
+        color:$black;
     }
 }
 
@@ -224,6 +241,7 @@ label{
             }
         }
         li{
+            line-height:20px;
             align-self:center;
         }
     }

@@ -13,14 +13,6 @@ import {
 
 // Your web app's Firebase configuration
 
-// query stuff
-const $displayStats = $(".displayStats");
-
-const $katesPassRate = $(".katesMotel .additionalText");
-const $elevatorPassRate = $(".elevator .additionalText");
-const $lastLaughPassRate = $(".theLastLaugh .additionalText");
-const $shortCutPassRate = $(".theShortCut .additionalText");
-
 const firebaseConfig = {
   apiKey: "AIzaSyB1GiZczbIxSso7zE6CYelGG34X7I5kECE",
   authDomain: "scoreboard-b9174.firebaseapp.com",
@@ -36,6 +28,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const dbRef = ref(database);
+
+// query stuff
+const $displayStats = $(".displayStats");
+
+const $katesPassRate = $(".katesMotel .additionalText");
+const $elevatorPassRate = $(".elevator .additionalText");
+const $lastLaughPassRate = $(".theLastLaugh .additionalText");
+const $shortCutPassRate = $(".theShortCut .additionalText");
 
 // stores all recent stats so I can use the data
 const recentStats = [];
