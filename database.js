@@ -6,6 +6,7 @@ import {
   ref,
   push,
   get,
+  onValue,
 } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -31,14 +32,19 @@ const dbRef = ref(database);
 
 // query stuff
 const $displayStats = $(".displayStats");
+const $displayAllStats = $(".displayAllStats");
 
 const $katesPassRate = $(".katesMotel .additionalText");
 const $elevatorPassRate = $(".elevator .additionalText");
 const $lastLaughPassRate = $(".theLastLaugh .additionalText");
 const $shortCutPassRate = $(".theShortCut .additionalText");
 
+const $loadButton = $(".loadButton");
+const $deleteButton = $(".deleteButton");
+
 // stores all recent stats so I can use the data
 const recentStats = [];
+const arrayOfPassData = [];
 
 // stores kate's stats
 const kateStats = [];
@@ -66,20 +72,71 @@ let elevatorPassRate;
 
 export default function roomObj(statObject) {
   push(dbRef, statObject);
+  console.log(statObject);
+  fetchData();
 }
+
+$loadButton.on("click", function () {
+  loadStats();
+  createEventListener();
+});
+
+const loadStats = () => {
+  onValue(dbRef, (data) => {
+    const passData = data.val();
+
+    for (let item in passData) {
+      const objectOfArray = {
+        id: item,
+        date: passData[item].date,
+        name: passData[item].name,
+        pass: passData[item].pass,
+        time: passData[item].time,
+        player: passData[item].player,
+        hint: passData[item].hint,
+      };
+
+      arrayOfPassData.push(objectOfArray);
+    }
+
+    const editRecentStats = arrayOfPassData.slice(-10);
+    editRecentStats.forEach((stat) => {
+      $displayAllStats.prepend(`<ul id=${stat.id}>
+      <li>${stat.date}</li>
+      <li>${stat.name}</li>
+      <li>${stat.pass}</li>
+      <li>${stat.time}</li>
+      <li>${stat.player}</li>
+      <li>${stat.hint}</li>
+      <li class="deleteButton"><i class="fa-solid fa-trash-can"></i></li></ul>`);
+    });
+  });
+};
+
+const createEventListener = () => {
+  console.log("we in here");
+  console.log($deleteButton);
+  $deleteButton.on("click", function (e) {
+    console.log(e);
+  });
+};
+
+const removePassDetails = (id) => {
+  const roomPassRef = ref(database, `/${id}`);
+  console.log(roomPassRef);
+  removePassDetails(roomPassRef);
+};
 
 export function fetchData() {
   get(dbRef).then((response) => {
     if (response.exists()) {
-      console.log(response.val());
-
-      recentStats.push(response.val());
-
-      console.log(recentStats);
+      response.forEach((stat) => {
+        recentStats.push(stat.val());
+      });
 
       const lastTen = recentStats.slice(-10);
       lastTen.forEach((entry) => {
-        console.log(entry);
+        // console.log(entry);
         $displayStats.prepend(`<ul>
         <li>${entry.date}</li>
         <li>${entry.name}</li>
@@ -89,23 +146,13 @@ export function fetchData() {
         <li>${entry.hint}</li></ul>`);
       });
 
-      // recentStats.push(response.val());
-
-      // response.forEach((stat) => {
-      //   recentStats.push(stat.val());
-      // });
-
       // displays the passrates for the rooms based on the stats
-      // calculateData();
-      // displays most recent data
-      // displayData();
+      calculateData();
     } else {
       console.log("no data!");
     }
   });
 }
-
-// function displayData() {}
 
 function calculateData() {
   // console.log(recentStats);

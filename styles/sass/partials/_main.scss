@@ -246,6 +246,73 @@ label{
         }
     }
 
+}
 
+// EDIT STATS SECTION
+
+.editStatsHeader{
+    font-family:$bebas;
+    font-size:1.5rem;
+    padding:10px;
+    // background-color:rgba($color:$black, $alpha:0.9);
+    color:$white;
+
+    ul{
+        display:flex;
+        list-style:none;
+        justify-content:space-between;
+        padding:0;
+        transform:skew(-10deg);
+        border:2px $red solid;
+        background-color:$red;
+        margin:0;
+
+        li{
+            width:calc(100%/6);
+            text-align:center;
+        }
+    }
+
+}
+
+.editStatsLoad{
+    display:flex;
+    justify-content: center;
+
+    .loadButton{
+        font-family:$poppins;
+        background-color:$red;
+        border:2px $red solid;
+        padding:5px 10px;
+        transition:background-color 0.3s;
+
+        &:hover{
+            background-color:$white;
+        }
+    }
+}
+
+.displayAllStats{
+    ul{
+        font-family:$bebas;
+        display:flex;
+        list-style:none;
+        font-size:1.2rem;
+        color:white;
+        margin:0 0px 10px;
+        padding:15px 0;
+        background-color:rgba($color:$grey, $alpha:1);
+        transform:skew(-5deg);
+
+        &:nth-child(odd){
+            background-color:rgba($color:$grey, $alpha:0.5);
+            // border-radius:10px;
+        }
+    }
+    li{
+        align-self:center;
+        width:calc(100%/7);
+        text-align:center;
+    }
 }
 

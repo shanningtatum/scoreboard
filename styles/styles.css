@@ -699,3 +699,73 @@ label:hover {
   -ms-flex-item-align: center;
       align-self: center;
 }
+
+.editStatsHeader {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+  padding: 10px;
+  color: #fff;
+}
+.editStatsHeader ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0;
+  -webkit-transform: skew(-10deg);
+          transform: skew(-10deg);
+  border: 2px #d01f25 solid;
+  background-color: #d01f25;
+  margin: 0;
+}
+.editStatsHeader ul li {
+  width: 16.6666666667%;
+  text-align: center;
+}
+
+.editStatsLoad {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.editStatsLoad .loadButton {
+  font-family: "Poppins", sans-serif;
+  background-color: #d01f25;
+  border: 2px #d01f25 solid;
+  padding: 5px 10px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.editStatsLoad .loadButton:hover {
+  background-color: #fff;
+}
+
+.displayAllStats ul {
+  font-family: "Bebas Neue", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  font-size: 1.2rem;
+  color: white;
+  margin: 0 0px 10px;
+  padding: 15px 0;
+  background-color: #58585a;
+  -webkit-transform: skew(-5deg);
+          transform: skew(-5deg);
+}
+.displayAllStats ul:nth-child(odd) {
+  background-color: rgba(88, 88, 90, 0.5);
+}
+.displayAllStats li {
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 14.2857142857%;
+  text-align: center;
+}
