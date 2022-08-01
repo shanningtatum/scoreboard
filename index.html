@@ -18,13 +18,29 @@
     <title>Room Stats</title>
   </head>
   <body>
+    <!-- password authorization -->
+    <div class="authorization">
+      <div class="popupBox">
+        <form action="">
+          <label>Enter Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter Password"
+          />
+        </form>
+        <button class="passwordSubmit">Submit</button>
+      </div>
+    </div>
+
     <header>
       <div class="wrapper">
         <h1>Perplexity Escape Games</h1>
         <nav>
           <ul>
             <li><a href="#passrate">Passrates</a></li>
-            <li><a href="#add">Add Stats</a></li>
+            <li><a href="#" class="addLink">Add Stats</a></li>
             <li><a href="#edit">Edit Stats</a></li>
             <li><a href="#view">Recent Stats</a></li>
           </ul>
@@ -37,8 +53,9 @@
           <i class="fa-solid fa-circle-arrow-up"></i>
         </button>
       </div>
+
       <!-- ADD STATS SECTION -->
-      <section id="add">
+      <section id="add" class="add">
         <div class="wrapper">
           <h2>Add Stat</h2>
           <!-- START OF FORM -->
@@ -265,7 +282,7 @@
       </section>
 
       <!-- EDIT STATS SECTION -->
-      <section id="edit">
+      <section id="edit" class="edit">
         <div class="wrapper">
           <h2>Edit Stat</h2>
           <div class="editStatsLoad">

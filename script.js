@@ -12,6 +12,13 @@ app.$scrollButton = $(".scrollButton");
 // query
 app.$displayStats = $(".displayStats");
 app.$timeFieldset = $(".timeFieldset");
+app.$addSection = $(".add");
+app.$authorization = $(".authorization");
+
+// password form
+app.$addLink = $(".addLink");
+app.$password = $("#password");
+app.$passwordSubmit = $(".passwordSubmit");
 
 // time and date grabber
 let time;
@@ -50,7 +57,24 @@ app.setTime = () => {
   return date + " " + time;
 };
 
+app.checkAuthorization = () => {
+  app.$passwordSubmit.on("click", function (e) {
+    if (app.$password.val() == "escape911") {
+      e.preventDefault();
+      app.$authorization.removeClass("active");
+      app.$addSection.addClass("active");
+    } else {
+      alert("wrong password");
+    }
+  });
+};
+
 app.addEventListener = function () {
+  app.$addLink.on("click", function () {
+    app.$authorization.addClass("active");
+    app.checkAuthorization();
+  });
+
   $(window).on("scroll", function () {
     if (scrollY > 10) {
       app.$scrollButton.css("display", "block");

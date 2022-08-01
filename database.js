@@ -78,7 +78,6 @@ export default function roomObj(statObject) {
 
 $loadButton.on("click", function () {
   loadStats();
-  createEventListener();
 });
 
 const loadStats = () => {
@@ -108,7 +107,8 @@ const loadStats = () => {
       <li>${stat.time}</li>
       <li>${stat.player}</li>
       <li>${stat.hint}</li>
-      <li class="deleteButton"><i class="fa-solid fa-trash-can"></i></li></ul>`);
+      <li><i class="fa-solid fa-trash-can" class="deleteButton"></i></li></ul>`);
+      createEventListener();
     });
   });
 };
@@ -121,12 +121,14 @@ const createEventListener = () => {
   });
 };
 
+// deletes the pass rate details
 const removePassDetails = (id) => {
   const roomPassRef = ref(database, `/${id}`);
   console.log(roomPassRef);
   removePassDetails(roomPassRef);
 };
 
+// fetches data on initial page load
 export function fetchData() {
   get(dbRef).then((response) => {
     if (response.exists()) {
@@ -154,6 +156,7 @@ export function fetchData() {
   });
 }
 
+// pushes results in appropriate room names to store in array
 function calculateData() {
   // console.log(recentStats);
 

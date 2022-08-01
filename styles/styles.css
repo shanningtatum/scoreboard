@@ -488,6 +488,67 @@ input[type=radio]:checked + label {
   background-color: white;
 }
 
+.authorization {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+.authorization.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.authorization .popupBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: grey;
+  width: 20%;
+  height: 12%;
+  padding: 10px;
+  margin: auto;
+}
+.authorization .popupBox label {
+  background-color: grey;
+  border: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+.authorization .popupBox form {
+  width: 80%;
+  margin: auto auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.authorization .popupBox .passwordSubmit {
+  width: 20%;
+  margin: 0 auto;
+}
+
+.add {
+  padding: 10px;
+  display: none;
+}
+.add.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 label {
   border: 2px #d01f25 solid;
   background-color: #d01f25;
