@@ -19,27 +19,33 @@ app.$authorization = $(".authorization");
 app.$addLink = $(".addLink");
 app.$password = $("#password");
 app.$passwordSubmit = $(".passwordSubmit");
+app.$closeIcon = $(".closeIcon");
+
+app.$successMessage = $(".successMessage");
 
 // time and date grabber
 let time;
 let date;
 
+// state
+let userPass = false;
+
 app.setTime = () => {
   const timestamp = new Date();
 
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
     "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   const currentMonth = months[timestamp.getMonth()];
@@ -72,6 +78,9 @@ app.checkAuthorization = () => {
 app.addEventListener = function () {
   app.$addLink.on("click", function () {
     app.$authorization.addClass("active");
+    app.$closeIcon.on("click", function () {
+      app.$authorization.removeClass("active");
+    });
     app.checkAuthorization();
   });
 
@@ -102,9 +111,11 @@ app.addEventListener = function () {
   });
   app.$passYes.on("click", function () {
     app.$timeFieldset.css("display", "block");
+    userPass = true;
   });
   app.$passNo.on("click", function () {
     app.$timeFieldset.css("display", "none");
+    userPass = false;
   });
 };
 
@@ -120,9 +131,10 @@ app.readInput = function () {
     roomName == undefined ||
     passBoolean == undefined ||
     playerAmt == undefined ||
-    hintAmt == undefined
+    hintAmt == undefined ||
+    (userPass == true) & (timePlayed == "")
   ) {
-    alert("Fill in required fields!");
+    alert("Fill in all the fields!");
   } else {
     if (timePlayed == "") {
       const stamp = app.setTime();
@@ -159,6 +171,12 @@ app.addScore = function (date, name, pass, time, player, hint) {
   };
   $("input[type='radio']").prop("checked", false);
   $(".timePlayed").val("");
+  app.$timeFieldset.css("display", "none");
+  app.$successMessage.addClass("active");
+
+  setTimeout(() => {
+    app.$successMessage.removeClass("active");
+  }, 5000);
 
   // push object to database
 

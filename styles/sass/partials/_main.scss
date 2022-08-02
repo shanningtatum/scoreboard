@@ -17,50 +17,7 @@ input[type=radio]{
         // transform:scale(2rem);
     }
 }
-// authorization box
 
-.authorization{
-    display:none;
-    position: absolute;
-    
-    width:100%;
-    height:100vh;
-    top:0;
-    right:0;
-    background-color:rgba($color:$black, $alpha:0.8);
-    z-index:10;
-
-    &.active{
-        display:flex;
-    }
-    .popupBox{
-        display:flex;
-        flex-direction:column;
-        background-color:grey;
-        width:20%;
-        height:12%;
-        padding:10px;
-        margin: auto;
-
-        label{
-            background-color:grey;
-            border:none;
-            padding:0;
-            margin-bottom:10px;
-        }
-        form{
-            width:80%;
-            margin:auto auto;
-            display:flex;
-            flex-direction:column;
-        }
-
-        .passwordSubmit{
-            width:20%;
-            margin:0 auto;
-        }
-    }
-}
 // add section
 .add{
     padding:10px;

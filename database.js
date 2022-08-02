@@ -73,7 +73,7 @@ let elevatorPassRate;
 export default function roomObj(statObject) {
   push(dbRef, statObject);
   console.log(statObject);
-  fetchData();
+  updateStats();
 }
 
 $loadButton.on("click", function () {
@@ -126,6 +126,31 @@ const removePassDetails = (id) => {
   const roomPassRef = ref(database, `/${id}`);
   console.log(roomPassRef);
   removePassDetails(roomPassRef);
+};
+
+// fetches data after adding new stat
+const updateStats = () => {
+  get(dbRef).then((response) => {
+    if (response.exists()) {
+      response.forEach((stat) => {
+        recentStats.push(stat.val());
+      });
+
+      const lastTen = recentStats.slice(-10);
+      lastTen.forEach((entry) => {
+        // console.log(entry);
+        $displayStats.prepend(`<ul>
+        <li>${entry.date}</li>
+        <li>${entry.name}</li>
+        <li>${entry.pass}</li>
+        <li>${entry.time}</li>
+        <li>${entry.player}</li>
+        <li>${entry.hint}</li></ul>`);
+      });
+    } else {
+      console.log("no data!");
+    }
+  });
 };
 
 // fetches data on initial page load

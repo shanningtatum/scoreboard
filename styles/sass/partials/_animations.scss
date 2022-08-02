@@ -93,3 +93,12 @@
         background-position:center;
     }
 }
+
+@keyframes successMessage{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}

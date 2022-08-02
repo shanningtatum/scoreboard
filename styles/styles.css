@@ -448,6 +448,22 @@ body {
     background-position: center;
   }
 }
+@-webkit-keyframes successMessage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes successMessage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 header {
   background-color: #d01f25;
   padding: 10px;
@@ -471,21 +487,6 @@ header a {
 }
 header a:hover, header a:focus {
   color: rgba(0, 0, 0, 0.5);
-}
-
-main {
-  background-color: bisque;
-}
-
-fieldset {
-  border: none;
-}
-
-input[type=radio] {
-  display: none;
-}
-input[type=radio]:checked + label {
-  background-color: white;
 }
 
 .authorization {
@@ -512,10 +513,23 @@ input[type=radio]:checked + label {
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: grey;
-  width: 20%;
+  width: 300px;
   height: 12%;
   padding: 10px;
   margin: auto;
+  position: relative;
+}
+.authorization .popupBox .closeIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.authorization .popupBox .closeIcon:hover {
+  color: #d01f25;
 }
 .authorization .popupBox label {
   background-color: grey;
@@ -535,8 +549,32 @@ input[type=radio]:checked + label {
           flex-direction: column;
 }
 .authorization .popupBox .passwordSubmit {
-  width: 20%;
+  width: 100px;
   margin: 0 auto;
+}
+
+.successMessage {
+  opacity: 0;
+  text-align: center;
+}
+.successMessage.active {
+  -webkit-animation: successMessage 0.1s forwards;
+          animation: successMessage 0.1s forwards;
+}
+
+main {
+  background-color: bisque;
+}
+
+fieldset {
+  border: none;
+}
+
+input[type=radio] {
+  display: none;
+}
+input[type=radio]:checked + label {
+  background-color: white;
 }
 
 .add {
