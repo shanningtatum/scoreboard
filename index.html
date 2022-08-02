@@ -123,7 +123,7 @@
             <fieldset class="timeFieldset">
               <legend>TIME REMAINING</legend>
               <input
-                type="text"
+                type="number"
                 name="timePlayed"
                 id="timePlayed"
                 class="timePlayed"
@@ -288,7 +288,22 @@
       <!-- EDIT STATS SECTION -->
       <section id="edit" class="edit">
         <div class="wrapper">
+          <!-- CONFIRMATION BOX -->
+          <div class="confirmationBox">
+            <div class="confirmationPopup">
+              <h3>Are you sure you want to delete this?</h3>
+              <div class="confirmationButton">
+                <button class="editYes">Yes</button>
+                <button class="editNo">No</button>
+              </div>
+            </div>
+          </div>
+          <!-- CONFIRMATION BOX END -->
+
           <h2>Edit Stat</h2>
+          <div class="editSuccess">
+            <p>Stat successfully deleted!</p>
+          </div>
           <div class="editStatsLoad">
             <button class="loadButton">Load Stats</button>
           </div>

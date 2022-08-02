@@ -868,3 +868,36 @@ label:hover {
   width: 14.2857142857%;
   text-align: center;
 }
+
+.deleteButton {
+  z-index: 100;
+}
+
+.editSuccess {
+  text-align: center;
+  display: none;
+}
+.editSuccess.active {
+  display: block;
+}
+
+.confirmationBox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+.confirmationBox.active {
+  display: block;
+}
+.confirmationBox .confirmationPopup {
+  text-align: center;
+  padding: 20px;
+  width: 400px;
+  background-color: grey;
+  margin: auto;
+}

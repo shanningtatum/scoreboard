@@ -7,6 +7,7 @@ import {
   push,
   get,
   onValue,
+  remove,
 } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -40,7 +41,7 @@ const $lastLaughPassRate = $(".theLastLaugh .additionalText");
 const $shortCutPassRate = $(".theShortCut .additionalText");
 
 const $loadButton = $(".loadButton");
-const $deleteButton = $(".deleteButton");
+const $editSuccess = $(".editSuccess");
 
 // stores all recent stats so I can use the data
 const recentStats = [];
@@ -80,6 +81,7 @@ $loadButton.on("click", function () {
 });
 
 const loadStats = () => {
+  $loadButton.css("display", "none");
   onValue(dbRef, (data) => {
     const passData = data.val();
 
@@ -106,17 +108,37 @@ const loadStats = () => {
       <li>${stat.time}</li>
       <li>${stat.player}</li>
       <li>${stat.hint}</li>
-      <li><i class="fa-solid fa-trash-can" class="deleteButton"></i></li></ul>`);
+      <li><i class="fa-solid fa-trash-can deleteButton"></i></li></ul>`);
       createEventListener();
     });
   });
 };
 
 const createEventListener = () => {
+  const $deleteButton = $(".deleteButton");
   console.log("we in here");
-  console.log($deleteButton);
   $deleteButton.on("click", function (e) {
-    console.log(e);
+    const $confirmationBox = $(".confirmationBox");
+    $confirmationBox.addClass("active");
+
+    const $editYes = $(".editYes");
+    const $editNo = $(".editNo");
+
+    $editYes.on("click", function () {
+      const passId = e.target.offsetParent.id;
+      console.log(passId);
+      removePassDetails(passId);
+      $confirmationBox.removeClass("active");
+      $editSuccess.addClass("active");
+
+      setTimeout(() => {
+        $editSuccess.removeClass("active");
+      }, 5000);
+    });
+
+    $editNo.on("click", function () {
+      $confirmationBox.removeClass("active");
+    });
   });
 };
 
@@ -124,7 +146,7 @@ const createEventListener = () => {
 const removePassDetails = (id) => {
   const roomPassRef = ref(database, `/${id}`);
   console.log(roomPassRef);
-  removePassDetails(roomPassRef);
+  remove(roomPassRef);
 };
 
 // fetches data after adding new stat

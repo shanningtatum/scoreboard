@@ -325,3 +325,41 @@ label{
     }
 }
 
+.deleteButton{
+    z-index:100;
+}
+
+// CONFIRMATION BOX
+
+.editSuccess{
+    text-align: center;
+    display:none;
+
+    &.active{
+        display:block;
+        // animation:successMessage 0.1s forwards;
+    }
+}
+
+.confirmationBox{
+    display:none;
+    position: fixed;
+    top:0;
+    left:0;
+    height:100vh;
+    width:100vw;
+    background-color:rgba($color:$black, $alpha:0.8);
+    z-index:10;
+
+    &.active{
+        display:block;
+    }
+
+    .confirmationPopup{
+        text-align: center;
+        padding:20px;
+        width:400px;
+        background-color:grey;
+        margin:auto;
+    }
+}
