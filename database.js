@@ -72,7 +72,6 @@ let elevatorPassRate;
 
 export default function roomObj(statObject) {
   push(dbRef, statObject);
-  console.log(statObject);
   updateStats();
 }
 
@@ -135,7 +134,7 @@ const updateStats = () => {
       response.forEach((stat) => {
         recentStats.push(stat.val());
       });
-
+      $displayStats.html("");
       const lastTen = recentStats.slice(-10);
       lastTen.forEach((entry) => {
         // console.log(entry);
