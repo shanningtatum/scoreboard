@@ -39,6 +39,7 @@ const $katesPassRate = $(".katesMotel .additionalText");
 const $elevatorPassRate = $(".elevator .additionalText");
 const $lastLaughPassRate = $(".theLastLaugh .additionalText");
 const $shortCutPassRate = $(".theShortCut .additionalText");
+const $trueSpiesPassRate = $(".trueSpies .additionalText");
 
 // edit section
 const $loadButton = $(".loadButton");
@@ -71,6 +72,12 @@ const elevatorStats = [];
 const elevatorPass = [];
 const elevatorTime = [];
 let elevatorPassRate;
+
+// stores true spies stats
+const trueSpiesStats = [];
+const trueSpiesPass = [];
+const trueSpiesTime = [];
+let trueSpiesPassRate;
 
 export default function roomObj(statObject) {
   push(dbRef, statObject);
@@ -249,6 +256,12 @@ function calculateData() {
       if (result.pass === "Yes") {
         elevatorPass.push(result);
       }
+    } else if (result.name === "True Spies") {
+      trueSpiesStats.push(result);
+
+      if (result.pass === "Yes") {
+        trueSpiesPass.push(result);
+      }
     }
   });
 
@@ -267,6 +280,11 @@ function calculateData() {
   // gives value to SC pass rate
   shortCutPassRate = `${(
     (shortCutPass.length / shortCutStats.length) *
+    100
+  ).toFixed(2)}%`;
+  // gives value to True Spies pass rate
+  trueSpiesPassRate = `${(
+    (trueSpiesPass.length / trueSpiesStats.length) *
     100
   ).toFixed(2)}%`;
 
@@ -295,6 +313,13 @@ function calculateData() {
   );
   shortCutTime.push(findBestTime(shortCutPass));
   displayBestTime("theShortCut", shortCutTime);
+
+  // assign pass rate variable to true spies pass rate class
+  $trueSpiesPassRate.append(
+    `<h3><span>Pass Rate</span>${trueSpiesPassRate}</h3>`
+  );
+  trueSpiesTime.push(findBestTime(trueSpiesPass));
+  displayBestTime("trueSpies", trueSpiesTime);
 }
 
 // will display best time
