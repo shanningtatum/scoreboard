@@ -21,6 +21,8 @@ app.$password = $("#password");
 app.$passwordSubmit = $(".passwordSubmit");
 app.$closeIcon = $(".closeIcon");
 
+// confirmation password
+
 app.$successMessage = $(".successMessage");
 
 // time and date grabber

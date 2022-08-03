@@ -40,6 +40,7 @@ const $elevatorPassRate = $(".elevator .additionalText");
 const $lastLaughPassRate = $(".theLastLaugh .additionalText");
 const $shortCutPassRate = $(".theShortCut .additionalText");
 
+// edit section
 const $loadButton = $(".loadButton");
 const $editSuccess = $(".editSuccess");
 
@@ -92,22 +93,22 @@ const loadStats = () => {
         name: passData[item].name,
         pass: passData[item].pass,
         time: passData[item].time,
-        player: passData[item].player,
         hint: passData[item].hint,
+        player: passData[item].player,
       };
 
       arrayOfPassData.push(objectOfArray);
     }
 
-    const editRecentStats = arrayOfPassData.slice(-10);
+    const editRecentStats = arrayOfPassData.slice(-5);
     editRecentStats.forEach((stat) => {
       $displayAllStats.prepend(`<ul id=${stat.id}>
       <li>${stat.date}</li>
       <li>${stat.name}</li>
       <li>${stat.pass}</li>
       <li>${stat.time}</li>
-      <li>${stat.player}</li>
       <li>${stat.hint}</li>
+      <li>${stat.player}</li>
       <li><i class="fa-solid fa-trash-can deleteButton"></i></li></ul>`);
       createEventListener();
     });
@@ -116,28 +117,37 @@ const loadStats = () => {
 
 const createEventListener = () => {
   const $deleteButton = $(".deleteButton");
-  console.log("we in here");
   $deleteButton.on("click", function (e) {
     const $confirmationBox = $(".confirmationBox");
     $confirmationBox.addClass("active");
 
-    const $editYes = $(".editYes");
-    const $editNo = $(".editNo");
+    const $editPassword = $("#editPassword");
+    const $editPasswordSubmit = $(".editPasswordSubmit");
 
-    $editYes.on("click", function () {
-      const passId = e.target.offsetParent.id;
-      console.log(passId);
-      removePassDetails(passId);
-      $confirmationBox.removeClass("active");
-      $editSuccess.addClass("active");
+    // if user selects submit, check password value matches
+    $editPasswordSubmit.on("click", function () {
+      if ($editPassword.val() == "escape911") {
+        const passId = e.target.offsetParent.id;
 
-      setTimeout(() => {
-        $editSuccess.removeClass("active");
-      }, 5000);
-    });
+        // fades out deleted data
+        $(`#${passId}`).fadeOut(4000, function () {
+          removePassDetails(passId);
+        });
 
-    $editNo.on("click", function () {
-      $confirmationBox.removeClass("active");
+        // removes confirmation box
+        $confirmationBox.removeClass("active");
+
+        // display success message
+        $editSuccess.addClass("active");
+
+        // removes active class to remove success message
+        setTimeout(() => {
+          $editSuccess.removeClass("active");
+        }, 5000);
+      } else {
+        alert("wrong password");
+        // $confirmationBox.removeClass("active");
+      }
     });
   });
 };
@@ -145,8 +155,8 @@ const createEventListener = () => {
 // deletes the pass rate details
 const removePassDetails = (id) => {
   const roomPassRef = ref(database, `/${id}`);
-  console.log(roomPassRef);
   remove(roomPassRef);
+  updateStats();
 };
 
 // fetches data after adding new stat
@@ -165,8 +175,8 @@ const updateStats = () => {
         <li>${entry.name}</li>
         <li>${entry.pass}</li>
         <li>${entry.time}</li>
-        <li>${entry.player}</li>
-        <li>${entry.hint}</li></ul>`);
+        <li>${entry.hint}</li>
+        <li>${entry.player}</li></ul>`);
       });
     } else {
       console.log("no data!");
@@ -190,8 +200,8 @@ export function fetchData() {
         <li>${entry.name}</li>
         <li>${entry.pass}</li>
         <li>${entry.time}</li>
-        <li>${entry.player}</li>
-        <li>${entry.hint}</li></ul>`);
+        <li>${entry.hint}</li>
+        <li>${entry.player}</li></ul>`);
       });
 
       // displays the passrates for the rooms based on the stats
@@ -295,8 +305,8 @@ function displayBestTime(roomName, array) {
   <h4>Best Time</h4>
   <p>${array[0].time}</p>
   <p>${array[0].date}</p>
-  <p>${array[0].player} players</p>
-  <p>${array[0].hint} hint(s)</p>`);
+  <p>${array[0].hint} hint(s)</p>
+  <p>${array[0].player} players</p>`);
 }
 
 // calculates the best time of each room

@@ -258,6 +258,9 @@ label{
 }
 
 // EDIT STATS SECTION
+.edit{
+    padding:20px 0 100px;
+}
 
 .editStatsHeader{
     font-family:$bebas;
@@ -350,6 +353,14 @@ label{
     width:100vw;
     background-color:rgba($color:$black, $alpha:0.8);
     z-index:10;
+
+    label{
+        background-color:grey;
+        border:none;
+        &:hover{
+            background-color:grey;
+        }
+    }
 
     &.active{
         display:block;

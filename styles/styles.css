@@ -464,6 +464,22 @@ body {
     opacity: 1;
   }
 }
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 header {
   background-color: #d01f25;
   padding: 10px;
@@ -799,6 +815,10 @@ label:hover {
       align-self: center;
 }
 
+.edit {
+  padding: 20px 0 100px;
+}
+
 .editStatsHeader {
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.5rem;
@@ -890,6 +910,13 @@ label:hover {
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 10;
+}
+.confirmationBox label {
+  background-color: grey;
+  border: none;
+}
+.confirmationBox label:hover {
+  background-color: grey;
 }
 .confirmationBox.active {
   display: block;
