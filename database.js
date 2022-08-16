@@ -16,13 +16,19 @@ import {
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB1GiZczbIxSso7zE6CYelGG34X7I5kECE",
-  authDomain: "scoreboard-b9174.firebaseapp.com",
-  databaseURL: "https://scoreboard-b9174-default-rtdb.firebaseio.com",
-  projectId: "scoreboard-b9174",
-  storageBucket: "scoreboard-b9174.appspot.com",
-  messagingSenderId: "116544782893",
-  appId: "1:116544782893:web:89ed212eda7c5634f5aea4",
+  apiKey: "AIzaSyAnN5ZAjzXIH5JB3k7cSzd20XK0RXVgiIY",
+
+  authDomain: "scoreboard-restore.firebaseapp.com",
+
+  databaseURL: "https://scoreboard-restore-default-rtdb.firebaseio.com",
+
+  projectId: "scoreboard-restore",
+
+  storageBucket: "scoreboard-restore.appspot.com",
+
+  messagingSenderId: "90360198903",
+
+  appId: "1:90360198903:web:0e0b85e7e0553b4db945f2",
 };
 
 // Initialize Firebase
@@ -212,17 +218,14 @@ export function fetchData() {
       });
 
       // displays the passrates for the rooms based on the stats
-      calculateData();
+      pushResultsToData();
     } else {
       console.log("no data!");
     }
   });
 }
 
-// pushes results in appropriate room names to store in array
-function calculateData() {
-  // console.log(recentStats);
-
+function pushResultsToData() {
   recentStats.forEach((result) => {
     if (result.name === "Kate's Motel") {
       // stores all objects with kate's motel in array
@@ -265,6 +268,11 @@ function calculateData() {
     }
   });
 
+  calculateData();
+}
+
+// pushes results in appropriate room names to store in array
+function calculateData() {
   // gives value to elevator pass rate
   elevatorPassRate = `${(
     (elevatorPass.length / elevatorStats.length) *
