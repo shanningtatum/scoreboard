@@ -330,6 +330,12 @@ label{
 
 .deleteButton{
     z-index:100;
+    transition:0.3s color;
+    cursor:pointer;
+
+    &:hover{
+        color:$red;
+    }
 }
 
 // CONFIRMATION BOX

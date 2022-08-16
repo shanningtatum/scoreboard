@@ -891,6 +891,12 @@ label:hover {
 
 .deleteButton {
   z-index: 100;
+  -webkit-transition: 0.3s color;
+  transition: 0.3s color;
+  cursor: pointer;
+}
+.deleteButton:hover {
+  color: #d01f25;
 }
 
 .editSuccess {
