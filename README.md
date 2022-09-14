@@ -8,4 +8,4 @@ This was to keep an accurate analysis of the room's passrates but also to help d
 
 Once enough data was collected, I entered the entries into Google's Firebase to use as a database and created a website that displays the data. Employees can now use the website to log the entries and see the most recent stats. 
 
-It is still being worked on.
+It is still being worked on but you can check out the live site <a href="https://peg-leaderboard.netlify.app/">here</a>
