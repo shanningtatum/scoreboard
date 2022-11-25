@@ -205,20 +205,11 @@ app.calculateTimeRemaining = function (room, timeRemaining) {
 
   if (seconds == "00") {
     remainingSeconds = seconds.padStart(2, "0");
-
-    if (room === "The Last Laugh") {
-      remainingMinutes = 75 - minutes;
-    } else {
-      remainingMinutes = 60 - minutes;
-    }
+    remainingMinutes = 60 - minutes;
   } else {
     remainingSeconds = 60 - seconds.padStart(2, "0");
     remainingSeconds = remainingSeconds.toString().padStart(2, "0");
-    if (room === "The Last Laugh") {
-      remainingMinutes = 74 - minutes;
-    } else {
-      remainingMinutes = 59 - minutes;
-    }
+    remainingMinutes = 59 - minutes;
   }
 
   const remainingTime = `${remainingMinutes}:${remainingSeconds}`;
